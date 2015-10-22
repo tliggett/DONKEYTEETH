@@ -56,14 +56,20 @@ public class footballSimMethods {
          yods = -5;
     } else if (rods <=50) {
         yods = -10;
-    } else if (rods <=60) {
+    } else if (rods <=55) {
         yods = 2;
-    } else if (rods <=70) {
+    } else if (rods <=60) {
         yods = 5;
-    } else if (rods <=80) {
+    } else if (rods <=70) {
         yods = 8;
+    } else if (rods <=80) {
+        yods = 10;
+    } else if (rods <=90) {
+        yods = 15;
+    } else if (rods <=98) {
+        yods = 20;
     } else  {
-    	yods = 10;
+    	yods = 100;
 
     }
 	return yods;}
