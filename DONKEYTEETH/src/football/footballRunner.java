@@ -3,9 +3,6 @@ import static java.lang.System.*;
 
 import java.awt.Container;
 import java.util.Scanner;
-
-import methods.GraphicsRunner;
-import methods.ShapePanel;
 import javax.swing.JFrame;
 public class footballRunner {
 	
@@ -15,8 +12,7 @@ public class footballRunner {
 	char r, p;
 	String play;
 	Scanner gage = new Scanner(System.in);
-	private static final int WIDTH = 800;
-	private static final int HEIGHT = 2000;
+	
 	
 	
 	public footballRunner()
@@ -47,7 +43,7 @@ public class footballRunner {
 		
 		if (intDist<=0) {
 			out.print("FIRST DOWN!!!!!!");
-			getContentPane().add(new ShapePanel());
+			
 		} else{
 		out.println("Down:"+intDown);
 		out.println("Distance:"+intDist);
@@ -90,10 +86,6 @@ public class footballRunner {
 		out.print("TURNOVER");}
 	}
 	
-	private Container getContentPane() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public static void main( String args[] )
 	{
