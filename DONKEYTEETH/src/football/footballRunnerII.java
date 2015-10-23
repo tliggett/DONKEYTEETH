@@ -3,6 +3,10 @@ package football;
 import static java.lang.System.*;
 
 import java.awt.Container;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 import javax.swing.JFrame;
 
@@ -24,7 +28,7 @@ public class footballRunnerII {
 		intDown++;
 		intDist = 10;
 		yds2go = 80;
-
+		
 		while (intDown <= 4 && yds2go >= 0) {
 			out.println("Down: " + intDown);
 			out.println("Distance: " + intDist);
@@ -44,15 +48,6 @@ public class footballRunnerII {
 			}
 			
 			intDist= (int) (intDist-yds);
-			/*if(intDown <= 1){
-				intDist = intDist2 = (int) (10 - yds);
-			} else if (intDown<= 2) {
-				intDist = intDist3 = (int) (intDist2- yds);
-			} else if (intDown<= 3) {
-				intDist = intDist4 = (int) (intDist3- yds);
-			} else if (intDown<= 4) {
-				intDist = (int) (intDist3- yds);
-			}*/
 			intDown++;
 			yardsgained = (yds);
 			yds2go = (int) (yds2go-yds);
@@ -75,6 +70,43 @@ public class footballRunnerII {
 	}
 
 	public static void main(String args[]) {
-		footballRunnerII run = new footballRunnerII();
+		
+		
+		// The name of the file to open.
+        String fileName = "data/temp.txt";
+
+        // This will reference one line at a time
+        String line = null;
+
+        try {
+            // FileReader reads text files in the default encoding.
+            FileReader fileReader = 
+                new FileReader(fileName);
+
+            // Always wrap FileReader in BufferedReader.
+            BufferedReader bufferedReader = 
+                new BufferedReader(fileReader);
+
+            while((line = bufferedReader.readLine()) != null) {
+                System.out.println(line);
+            }   
+
+            // Always close files.
+            bufferedReader.close();         
+        }
+        catch(FileNotFoundException ex) {
+            System.out.println(
+                "Unable to open file '" + 
+                fileName + "'");                
+        }
+        catch(IOException ex) {
+            System.out.println(
+                "Error reading file '" 
+                + fileName + "'");                  
+            // Or we could just do this: 
+            // ex.printStackTrace();
+        }
+        
+        footballRunnerII run = new footballRunnerII();
 	}
 }
