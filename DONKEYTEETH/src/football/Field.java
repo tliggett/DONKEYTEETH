@@ -37,6 +37,10 @@ public class Field extends Canvas
       window.drawLine(1100, 200, 1100, 900);
       window.drawLine(1200, 200, 1200, 900);
       
+      window.setColor(Color.BLUE);
+      window.fillRect(100, 200, 100, 700);
+      window.fillRect(1200, 200, 100, 700);
+      
 
    }
 }
