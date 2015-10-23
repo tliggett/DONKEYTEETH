@@ -1,6 +1,12 @@
 package football;
 
 import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 import java.awt.Color;
 import java.awt.Canvas;
 
@@ -42,8 +48,19 @@ public class Field extends Canvas
       window.setColor(Color.BLUE);
       window.fillRect(1200, 200, 100, 700);
       
-      window.setColor(Color.White);
+      window.setColor(Color.WHITE);
       
+      window.setColor(Color.BLACK);
+      window.fillRect(100, 50, 1200, 100);
+      
+      Image img = null;
+      try{
+    	  img = ImageIO.read(new File("Graphics/Hawk2.jpg"));
+      } catch (IOException e) {
+    	  e.printStackTrace();
+      }
+      window.drawImage(img, 601, 450, 199,199, null);
+     
 
    }
 }
