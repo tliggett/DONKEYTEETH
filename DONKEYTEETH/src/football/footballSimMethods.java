@@ -5,7 +5,24 @@ import java.math.*;
 
 public class footballSimMethods {
 
-
+	
+	public int nextPlay(String PLAY, int yardline)
+	{ 
+		
+		if (PLAY.equals("run")) {
+		return (int) this.yds();
+		} else if (PLAY.equals("pass")) {
+		return (int) this.yods();
+		} else if (PLAY.equals("fg")) {
+			return this.FGResult(yardline);
+		
+		} else {
+		return -999;
+		}
+		
+	}
+	
+	
 	public double yds() {
 	double yds, rds;
 	rds = 100*(Math.random());
@@ -73,5 +90,38 @@ public class footballSimMethods {
 
     }
 	return yods;}
+	
+	
+	public int FGResult(int yardline){
+		double rods;
+		rods = 100*(Math.random());
+		if (yardline>50)
+			return 0;
+		if (yardline>45)
+			if(rods<20)
+				return 1;
+			else return 0;
+		if (yardline>40)
+			if(rods<50)
+				return 1;
+			else return 0;
+		if (yardline>30)
+			if(rods<75)
+				return 1;
+			else return 0;
+		if (yardline>20)
+			if(rods<90)
+				return 1;
+			else return 0;
+		if (yardline>10)
+			if(rods<95)
+				return 1;
+			else return 0;
+		else
+			if(rods<99)
+				return 1;
+			else return 0;
+		
+	}
 	
 }
