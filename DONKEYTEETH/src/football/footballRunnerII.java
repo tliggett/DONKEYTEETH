@@ -23,7 +23,7 @@ public class footballRunnerII {
 	public footballRunnerII() {
 		boolean playagain = true;
 		while (playagain) {
-		DoADrive();
+		DoAGame();
 		out.println("Exit Game?");
 		if(gage.next().toLowerCase().equals("yes"))
 			playagain=false;
@@ -32,7 +32,7 @@ public class footballRunnerII {
 		out.println("Quitter");
 	}
 	
-	public void DoADrive()
+	public void DoAGame()
 
 	{
 
@@ -48,27 +48,29 @@ public class footballRunnerII {
 		PLAY = "nothing";
 		yds = 0;*/
 		
-		Scoreboard1.StartDrive();
+		Scoreboard1.StartGame();
 		
-		while (Scoreboard1.DriveIsAlive()) {
+		while (Scoreboard1.GameIsAlive()){
+			out.println("--------------");
+			out.println(Scoreboard1.ReportScore());
 			out.println(Scoreboard1.ReportDownAndDistance());			
 			out.println(Scoreboard1.ReportYardsToEndzone());
-			out.println("Choose your Play");
-			PLAY = gage.next().toLowerCase();
+			out.println(Scoreboard1.PromptForPlay());
+			PLAY = Scoreboard1.nextPlay();
 			yds = donkeyteeth.nextPlay(PLAY, Scoreboard1.yardline);
-			
-			while(yds == -999){
-				out.println("Text Error: Please Retry");
-				out.println("Eligible Plays: run, pass, or fg");
-				PLAY = gage.next().toLowerCase();
-				yds = donkeyteeth.nextPlay(PLAY, Scoreboard1.yardline);
-			}
 			String Result = Scoreboard1.UpdateScoreboardAfterPlay(yds,PLAY);
 			out.println(Result);
+			if(Scoreboard1.Jumbotron.length()> 0){
+				out.println("===============" + Scoreboard1.Drives);
+				out.println(Scoreboard1.ReportDriveResult());
+				out.println(Scoreboard1.ReportScore());
+				out.println("Press Enter to Continue");
+				gage.next();
 				
+			}
 		}
 		
-		out.println(Scoreboard1.ReportDriveResult());
+		out.println("Final Score: " + Scoreboard1.ReportScore());
 	}
 
 	
