@@ -4,6 +4,7 @@ import static java.lang.System.*;
 
 import java.awt.Container;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,6 +14,7 @@ import football.footballSimMethods;
 import football.GraphicsRunner;
 
 public class footballRunnerII {
+	
 
 	int yds, yds2go, intDist, intDist2, intDist3, intDist4, intDown, yardsGained, intDist2Touch;
 	double yardsgained;
@@ -80,9 +82,15 @@ public class footballRunnerII {
 		
 	}
 
-	public static void main(String args[]) {
+	public static void main(String args[]) throws IOException{
 		
-		
+		Scanner scan = new Scanner(new File ("data/Plays.txt"));
+		while (scan.hasNextLine()){
+			String Play = scan.next();
+			out.println(Play);
+			
+			
+		}
 		// The name of the file to open.
         String fileName = "data/temp.txt";
 

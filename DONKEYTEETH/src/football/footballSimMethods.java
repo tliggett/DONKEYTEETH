@@ -22,8 +22,217 @@ public class footballSimMethods {
 		}
 		
 	}
+	public double RegularPlay(){
+		double yods, rods;
+		rods = (int)(100*(Math.random()));
+		if (rods == 1) 
+	        return 1;
+		if (rods == 2) 
+	        return 1;
+		if (rods == 3) 
+	        return 1;
+		if (rods == 4) 
+	        return 1;
+		if (rods == 5) 
+	        return 1;
+		if (rods == 6) 
+	        return 1;
+		if (rods == 7) 
+	        return 1;
+		if (rods == 8) 
+	        return 1;
+		if (rods == 9) 
+	        return 1;
+		if (rods == 10) 
+	        return 1;
+		if (rods == 11) 
+	        return 1;
+		if (rods == 12) 
+	        return 1;
+		if (rods == 13) 
+	        return 1;
+		if (rods == 14) 
+	        return 1;
+		if (rods == 15) 
+	        return 1;
+		if (rods == 16) 
+	        return 1;
+		if (rods == 17) 
+	        return 1;
+		if (rods == 18) 
+	        return 1;
+		if (rods == 19) 
+	        return 1;
+		if (rods == 20) 
+	        return 1;
+		if (rods == 21) 
+	        return 1;
+		if (rods == 22) 
+	        return 1;
+		if (rods == 23) 
+	        return 1;
+		if (rods == 24) 
+	        return 1;
+		if (rods == 25) 
+	        return 1;
+		if (rods == 26) 
+	        return 1;
+		if (rods == 27) 
+	        return 1;
+		if (rods == 28) 
+	        return 1;
+		if (rods == 29) 
+	        return 1;
+		if (rods == 30) 
+	        return 1;
+		if (rods == 31) 
+	        return 1;
+		if (rods == 32) 
+	        return 1;
+		if (rods == 33) 
+	        return 1;
+		if (rods == 34) 
+	        return 1;
+		if (rods == 35) 
+	        return 1;
+		if (rods == 36) 
+	        return 1;
+		if (rods == 37) 
+	        return 1;
+		if (rods == 38) 
+	        return 1;
+		if (rods == 39) 
+	        return 1;
+		if (rods == 40) 
+	        return 1;
+		if (rods == 41) 
+	        return 1;
+		if (rods == 42) 
+	        return 1;
+		if (rods == 43) 
+	        return 1;
+		if (rods == 44) 
+	        return 1;
+		if (rods == 45) 
+	        return 1;
+		if (rods == 46) 
+	        return 1;
+		if (rods == 47) 
+	        return 1;
+		if (rods == 48) 
+	        return 1;
+		if (rods == 49) 
+	        return 1;
+		if (rods == 50) 
+	        return 1;
+		if (rods == 51) 
+	        return 1;
+		if (rods == 52) 
+	        return 1;
+		if (rods == 53) 
+	        return 1;
+		if (rods == 54) 
+	        return 1;
+		if (rods == 55) 
+	        return 1;
+		if (rods == 56) 
+	        return 1;
+		if (rods == 57) 
+	        return 1;
+		if (rods == 58) 
+	        return 1;
+		if (rods == 59) 
+	        return 1;
+		if (rods == 60) 
+	        return 1;
+		if (rods == 61) 
+	        return 1;
+		if (rods == 62) 
+	        return 1;
+		if (rods == 63) 
+	        return 1;
+		if (rods == 64) 
+	        return 1;
+		if (rods == 65) 
+	        return 1;
+		if (rods == 66) 
+	        return 1;
+		if (rods == 67) 
+	        return 1;
+		if (rods == 68) 
+	        return 1;
+		if (rods == 69) 
+	        return 1;
+		if (rods == 70) 
+	        return 1;
+		if (rods == 71) 
+	        return 1;
+		if (rods == 72) 
+	        return 1;
+		if (rods == 73) 
+	        return 1;
+		if (rods == 74) 
+	        return 1;
+		if (rods == 75) 
+	        return 1;
+		if (rods == 76) 
+	        return 1;
+		if (rods == 77) 
+	        return 1;
+		if (rods == 78) 
+	        return 1;
+		if (rods == 79) 
+	        return 1;
+		if (rods == 80) 
+	        return 1;
+		if (rods == 81) 
+	        return 1;
+		if (rods == 82) 
+	        return 1;
+		if (rods == 83) 
+	        return 1;
+		if (rods == 84) 
+	        return 1;
+		if (rods == 85) 
+	        return 1;
+		if (rods == 86) 
+	        return 1;
+		if (rods == 87) 
+	        return 1;
+		if (rods == 88) 
+	        return 1;
+		if (rods == 89) 
+	        return 1;
+		if (rods == 90) 
+	        return 1;
+		if (rods == 91) 
+	        return 1;
+		if (rods == 92) 
+	        return 1;
+		if (rods == 93) 
+	        return 1;
+		if (rods == 94) 
+	        return 1;
+		if (rods == 95) 
+	        return 1;
+		if (rods == 96) 
+	        return 1;
+		if (rods == 97) 
+	        return 1;
+		if (rods == 98) 
+	        return 1;
+		if (rods == 99) 
+	        return 1;
+		if (rods == 100) 
+	        return 1;
+		return 0;
+	}
 	
-	
+	public boolean PlayIsRun(String PLAY){
+		if (PLAY.equals("pass"))
+			return false;
+		return true;
+	}
 	public double PuntResult() {
 		double yods, rods;
 		rods = 100*(Math.random());
