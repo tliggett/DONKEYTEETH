@@ -31,7 +31,7 @@ public class footballRunner {
 		
 		
 		if (PLAY.equals("run")) {
-             yds = donkeyteeth.yds();
+             yds = donkeyteeth.run();
         //} else if (PLAY.equals("pass")) {
         	;
         } else {
@@ -50,9 +50,9 @@ public class footballRunner {
 		gage.next();
 		
 		if (PLAY.equals("run")) {
-            yds = donkeyteeth.yds();
+            yds = donkeyteeth.run();
        } else if (PLAY.equals("pass")) {
-       		yds = donkeyteeth.yods();
+       		yds = donkeyteeth.pass();
        } else {
            out.print("textError");
        }

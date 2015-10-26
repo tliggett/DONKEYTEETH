@@ -61,30 +61,33 @@ public class footballSimMethods {
         yds = -5;
 	} else if (rds <=3 ) {
         yds = -3;
-    } else if (rds <=13) {
+    } else if (rds <=8) {
          yds = -2;
-    } else if (rds <=23) {
+    } else if (rds <=15) {
         yds = -1;
-    } else if (rds <=33) {
+    } else if (rds <=25) {
         yds = 0;
-    } else if (rds <=45) {
+    } else if (rds <=35) {
     	yds = 1;
-    } else if (rds <=57) {
+    } else if (rds <=50) {
     	yds = 3;
-    } else if (rds <=70) {
+    } else if (rds <=65) {
     	yds = 5;
-    } else if (rds <=83) {
+    } else if (rds <=75) {
     	yds = 7;
-    } else if (rds <=88) {
+    } else if (rds <=85) {
     	yds = 10;
-    } else if (rds <=92) {
+    } else if (rds <=90) {
     	yds = 25;
-    } else if (rds <=95) {
+    } else if (rds <=92) {
     	yds = 35;
-    } else if (rds <=97) {
+    } else if (rds <=94) {
     	yds = 50;
-    } else if (rds <=99) {
+    } else if (rds <=96) {
     	yds = 75;
+    } else if (rds <=99) {
+    	yds = -555;
+    	
     } else  {
     	yds = 100;
 
@@ -96,26 +99,30 @@ public class footballSimMethods {
 	public double pass() {
 	double yods, rods;
 	rods = 100*(Math.random());
-	if (rods <=30 ) {
+	if (rods <=40 ) {
         yods = 0;
-    } else if (rods <=33) {
+    } else if (rods <=43) {
          yods = -5;
-    } else if (rods <=37) {
-        yods = -10;
-    } else if (rods <=40) {
-        yods = 2;
     } else if (rods <=45) {
+        yods = -10;
+    } else if (rods <=50) {
+        yods = 2;
+    } else if (rods <=58) {
         yods = 5;
-    } else if (rods <=55) {
+    } else if (rods <=68) {
         yods = 8;
-    } else if (rods <=60) {
+    } else if (rods <=78) {
         yods = 10;
-    } else if (rods <=75) {
+    } else if (rods <=82) {
         yods = 15;
-    } else if (rods <=85) {
+    } else if (rods <= 88) {
         yods = 20;
-    } else if (rods <=95) {
-        yods = 40;   
+    } else if (rods <= 91) {
+        yods = 40;  
+    } else if (rods <= 95) {
+        yods = -777;  
+    } else if (rods <= 99) {
+        yods = -555;  
     } else  {
     	yods = 100;
 
@@ -155,4 +162,5 @@ public class footballSimMethods {
 		
 	}
 	
-}
+		
+	}

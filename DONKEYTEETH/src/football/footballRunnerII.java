@@ -61,7 +61,7 @@ public class footballRunnerII {
 			String Result = Scoreboard1.UpdateScoreboardAfterPlay(yds,PLAY);
 			out.println(Result);
 			if(Scoreboard1.Jumbotron.length()> 0){
-				out.println("===============" + Scoreboard1.Drives);
+				out.println("===============");
 				out.println(Scoreboard1.ReportDriveResult());
 				out.println(Scoreboard1.ReportScore());
 				out.println("Press Enter to Continue");

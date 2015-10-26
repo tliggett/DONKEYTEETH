@@ -1,6 +1,7 @@
 package football;
 
-import static java.lang.System.out;
+import static
+java.lang.System.out;
 import java.util.Scanner;
 public class Team {
 
