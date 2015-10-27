@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.Scanner;
 import javax.swing.JFrame;
 import football.footballSimMethods;
-import football.GraphicsRunner;
+
 
 public class footballRunnerII {
 	

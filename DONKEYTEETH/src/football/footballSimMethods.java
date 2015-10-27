@@ -38,6 +38,9 @@ public class footballSimMethods {
 		
 		
 	}
+	
+	
+	
 	public double RegularPlay(){
 		double yods, rods;
 		rods = (int)(100*(Math.random()));
@@ -322,7 +325,18 @@ public class footballSimMethods {
 
 
 	public double pass() {
-	double yods, rods;
+		Playbook myPlaybook=new Playbook();
+
+		int rods, yods;
+		rods = 0;
+		if (rods == 0 ) 	
+			return (double)myPlaybook.pass[1];
+		return 1;
+		
+	}
+	
+		
+		/*double yods, rods;
 	rods = 100*(Math.random());
 	if (rods <=40 ) {
         yods = 0;
@@ -349,10 +363,10 @@ public class footballSimMethods {
     } else if (rods <= 99) {
         yods = -555;  
     } else  {
-    	yods = 100;
+    	yods = 100;*/
 
-    }
-	return yods;}
+    //}
+	//return yods;}
 	
 	
 	public int FGResult(int yardline){
