@@ -264,7 +264,7 @@ public String UpdateScoreboardAfterPlay(int yardsgained, String PLAY){
 
 public Boolean GameIsAlive() {
 	
-	if(Drives<0)
+	if(Drives<0 && HomeScore!=AwayScore)
 		return false;
 	return true;
 	
@@ -310,8 +310,13 @@ public String ReportDriveResult(){
 	
 	
 	
-	
+	if(Drives < 0){
+		this.Jumbotron = ("OVERTIME");
+		
+	}
+	else{	
 	this.Jumbotron += ("\n Drives left: " + (this.Drives+1));
+	}
 	return Jumbotron;
 	}
 }

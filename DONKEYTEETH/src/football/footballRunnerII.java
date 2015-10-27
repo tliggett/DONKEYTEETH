@@ -84,13 +84,10 @@ public class footballRunnerII {
 
 	public static void main(String args[]) throws IOException{
 		
-		Scanner scan = new Scanner(new File ("data/Plays.txt"));
-		while (scan.hasNextLine()){
-			String Play = scan.next();
-			out.println(Play);
+		
 			
 			
-		}
+		
 		// The name of the file to open.
         String fileName = "data/temp.txt";
 

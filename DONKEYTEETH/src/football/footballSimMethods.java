@@ -1,6 +1,12 @@
 package football;
 
 import java.util.*;
+
+import static java.lang.System.out;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.math.*;
 
 public class footballSimMethods {
@@ -20,6 +26,16 @@ public class footballSimMethods {
 		} else {
 		return -999;
 		}
+		
+	}
+	
+	public void ChoosePlay() throws IOException{
+		Scanner scan = new Scanner(new File ("data/Plays.txt"));
+		while (scan.hasNextLine()){
+			String Play = scan.next();
+			out.println(Play);
+		}
+		
 		
 	}
 	public double RegularPlay(){
