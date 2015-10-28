@@ -22,7 +22,7 @@ public class footballRunnerII {
 	char r, p;
 	String play;
 	Scanner gage = new Scanner(System.in);
-	public footballRunnerII() {
+	public footballRunnerII() throws FileNotFoundException {
 		boolean playagain = true;
 		while (playagain) {
 		DoAGame();
@@ -34,10 +34,10 @@ public class footballRunnerII {
 		out.println("Quitter");
 	}
 	
-	public void DoAGame()
+	public void DoAGame() throws FileNotFoundException
 
 	{
-
+		Playbook Playbook1 = new Playbook();
 		footballSimMethods donkeyteeth = new footballSimMethods();
 		Scoreboard Scoreboard1 = new Scoreboard();
 		//FootbalGraphicsRunner project = new FootbalGraphicsRunner();
@@ -50,6 +50,8 @@ public class footballRunnerII {
 		PLAY = "nothing";
 		yds = 0;*/
 		
+		
+		out.println(Playbook1.readfile());
 		Scoreboard1.StartGame();
 		
 		while (Scoreboard1.GameIsAlive()){
