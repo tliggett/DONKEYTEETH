@@ -120,7 +120,7 @@ public String UpdateScoreboardAfterPlay(int yardsgained, String PLAY){
 	
 	Jumbotron = "";
 	if(yardsgained == -555) {
-		yardsbeforeturnover = donkeyteeth.run();
+		yardsbeforeturnover = donkeyteeth.nextPlay(PLAY, yardline);
 		yardline += yardsbeforeturnover;
 		yardline1 = 100 - yardline;
 		HomeHasBall= !HomeHasBall;
@@ -142,7 +142,7 @@ public String UpdateScoreboardAfterPlay(int yardsgained, String PLAY){
 	}
 	else if(yardsgained == -777)
 	{
-		yardsbeforeturnover = (int) donkeyteeth.pass();
+		yardsbeforeturnover = (int) donkeyteeth.nextPlay(PLAY, yardline);
 		yardline += yardsbeforeturnover;
 		yardline1 = 100 - yardline;
 		HomeHasBall= !HomeHasBall;

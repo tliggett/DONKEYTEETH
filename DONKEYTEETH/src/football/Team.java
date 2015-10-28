@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Team {
 
 	
-	   
+	public String name = "";   
 	public boolean isCPU = false;
 	double rods;
 	Scanner gage = new Scanner(System.in);

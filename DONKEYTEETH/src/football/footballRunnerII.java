@@ -51,7 +51,7 @@ public class footballRunnerII {
 		yds = 0;*/
 		
 		
-		out.println(Playbook1.readfile());
+		Playbook1.readfile();
 		Scoreboard1.StartGame();
 		
 		while (Scoreboard1.GameIsAlive()){

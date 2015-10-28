@@ -8,72 +8,72 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Playbook {
-	
-	
-	int[] pass={0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	-5,	-5,	-5,	-10,	-10,	-10,	-10,	-10,	-10,	5,	5,	5,	5,	5,	5,	5,	5,	5,	8,	8,	8,	8,	8,	8,	8,	8,	8,	8,	10,	10,	10,	10,	10,	10,	10,	10,	10,	15,	15,	15,	15,	20,	20,	20,	20,	20,	20,	40,	40,	40,	-777,	-777,	-777,	-777,	-555,	-555,	-555,	-555,	100 };
+	public Play[] playlist = new Play[30];
 
-
-public int [] pass(){
-	
-	
-	return pass;
-}
 	public static boolean IsValidPlay(String PLAY) {
-		if(PLAY.)
+		Playbook Playbook1 = new Playbook();
+		Play[] plays = Playbook1.playlist;
+		for (int i = plays.length - 1; i >= 0; i--) {
+			if (plays[i].name.equals(PLAY))
+				return true;
+
+		}
 		if (PLAY.equals("fg"))
 			return true;
 		if (PLAY.equals("punt"))
 			return true;
 		return false;
 	}
-		
-	public void readfile() throws FileNotFoundException{
-		Play Playx,
-		String[]playlist ={Playi};	
-			// The name of the file to open.
-			String fileName = "data/playslist.csv";
-		
-			        // This will reference one line at a time
-			       String line = null;
-			
-			        try {
-		            // FileReader reads text files in the default encoding.
-			            FileReader fileReader = 
-			              new FileReader(fileName);
-			
-			            // Always wrap FileReader in BufferedReader.
-			            BufferedReader bufferedReader = 
-			              new BufferedReader(fileReader);
-			
-			           while((line = bufferedReader.readLine()) != null) {
-			                String []ls = line.split(",");
-			                Playx = ls[0] 
-			            }   
-			
-			            // Always close files.
-			            bufferedReader.close();         
-		        }
-			        catch(FileNotFoundException ex) {
-			           System.out.println(
-			                "Unable to open file '" + 
-			               fileName + "'");                
-			      }
-			        catch(IOException ex) {
-			            System.out.println( "Error reading file '" 
-			                + fileName + "'");                  
-			            // Or we could just do this: 
-			            // ex.printStackTrace();
-			        
-			        }
-			     
-	return 	"house";
+
+	public void readfile() throws FileNotFoundException {
+		Scanner scan = new Scanner(new File ("data/playslist.csv"));
+		// The name of the file to open.
+		String fileName = "data/playslist.csv";
+		int i = 0;
+		// This will reference one line at a time
+		String line = null;
+
+		try {
+			// FileReader reads text files in the default encoding.
+			FileReader fileReader = new FileReader(fileName);
+
+			// Always wrap FileReader in BufferedReader.
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+			while ((line = bufferedReader.readLine()) != null) {
+				
+				String[] ls = line.split(",");
+				System.out.println(ls[6]);
+				String name = ls[i];
+				
+				playlist[i] = new Play();
+				playlist[i].name = ls[i];
+				System.out.println(playlist[i].name);
+				
+				/*if (ls[i + 1] == "0") {
+					playlist[i].isRun = false;
+				} else {
+					playlist[i].isRun = true;
+				}
+				for (int s = 1; s < 101; s++) {
+					playlist[i].odds[s] = ls[s + 1];
+
+				}
+				i++;*/
+			}
+
+			// Always close files.
+			bufferedReader.close();
+		} catch (FileNotFoundException ex) {
+			System.out.println("Unable to open file '" + fileName + "'");
+		} catch (IOException ex) {
+			System.out.println("Error reading file '" + fileName + "'");
+			// Or we could just do this:
+			// ex.printStackTrace();
+
+		}
+		System.out.println("Super Sim Football!!!!");
+
 	}
 
-		
-		
-	}
-	
-	
-	
-	
-
+}
