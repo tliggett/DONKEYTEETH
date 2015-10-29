@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Playbook {
-	public static Play[] playlist = new Play[18];
+	public static Play[] playlist = new Play[17];
 	static int isRun = 0;
 	
 	
