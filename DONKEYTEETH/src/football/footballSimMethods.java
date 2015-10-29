@@ -30,15 +30,9 @@ public class footballSimMethods {
 		
 	}
 	
-	public void ChoosePlay() throws IOException{
-		Scanner scan = new Scanner(new File ("data/Plays.txt"));
-		while (scan.hasNextLine()){
-			String Play = scan.next();
-			out.println(Play);
-		}
 		
 		
-	}
+	
 	
 	
 	

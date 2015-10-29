@@ -26,9 +26,9 @@ public class Playbook {
 	}
 
 	public void readfile() throws FileNotFoundException {
-		Scanner scan = new Scanner(new File ("data/playslist.csv"));
+		Scanner scan = new Scanner(new File ("data/playslist.txt"));
 		// The name of the file to open.
-		String fileName = "data/playslist.csv";
+		String fileName = "data/playslist.txt";
 		int i = 0;
 		// This will reference one line at a time
 		String line = null;
@@ -43,23 +43,19 @@ public class Playbook {
 			while ((line = bufferedReader.readLine()) != null) {
 				
 				String[] ls = line.split(",");
-				System.out.println(ls[6]);
-				String name = ls[i];
+				
 				
 				playlist[i] = new Play();
-				playlist[i].name = ls[i];
-				System.out.println(playlist[i].name);
+				playlist[i].name = ls[0];
+				String run = ls[1];
+				playlist[i].isRun = Integer.parseInt(run);
 				
-				/*if (ls[i + 1] == "0") {
-					playlist[i].isRun = false;
-				} else {
-					playlist[i].isRun = true;
-				}
-				for (int s = 1; s < 101; s++) {
-					playlist[i].odds[s] = ls[s + 1];
+				
+				for (int s = 0; s <= 99; s++) {
+					playlist[i].odds[s] = ls[s + 2];
 
 				}
-				i++;*/
+				i++;
 			}
 
 			// Always close files.
@@ -68,8 +64,7 @@ public class Playbook {
 			System.out.println("Unable to open file '" + fileName + "'");
 		} catch (IOException ex) {
 			System.out.println("Error reading file '" + fileName + "'");
-			// Or we could just do this:
-			// ex.printStackTrace();
+			
 
 		}
 		System.out.println("Super Sim Football!!!!");
