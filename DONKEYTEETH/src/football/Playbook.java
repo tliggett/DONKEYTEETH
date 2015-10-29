@@ -10,11 +10,10 @@ import java.util.Scanner;
 public class Playbook {
 	public Play[] playlist = new Play[30];
 
-	public static boolean IsValidPlay(String PLAY) {
+	public boolean IsValidPlay(String PLAY) {
 		Playbook Playbook1 = new Playbook();
-		Play[] plays = Playbook1.playlist;
-		for (int i = plays.length - 1; i >= 0; i--) {
-			if (plays[i].name.equals(PLAY))
+		for (int i = playlist.length - 1; i >= 0; i--) {
+			if (playlist[i].name.equals(PLAY))
 				return true;
 
 		}
