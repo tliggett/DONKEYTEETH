@@ -8,13 +8,17 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Playbook {
-	public Play[] playlist = new Play[30];
-
-	public boolean IsValidPlay(String PLAY) {
+	public static Play[] playlist = new Play[18];
+	static int isRun = 0;
+	
+	
+	public static boolean IsValidPlay(String PLAY) {
 		Playbook Playbook1 = new Playbook();
-		for (int i = playlist.length - 1; i >= 0; i--) {
-			if (playlist[i].name.equals(PLAY))
+		for (int i = playlist.length-1; i >= 0; i--) {
+			if (playlist[i].name.equals(PLAY)){
+				isRun = playlist[i].isRun;
 				return true;
+			}
 
 		}
 		if (PLAY.equals("fg"))
@@ -24,6 +28,16 @@ public class Playbook {
 		return false;
 	}
 
+
+	public static boolean IsRun(String PLAY ){
+		if(isRun == 1)
+				return true;
+		
+		return false;
+		
+		
+		
+	}
 	public void readfile() throws FileNotFoundException {
 		Scanner scan = new Scanner(new File ("data/playslist.txt"));
 		// The name of the file to open.

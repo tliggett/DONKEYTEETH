@@ -29,13 +29,13 @@ public class Team {
 			else
 				return "pass";
 		}
-		else{
-			String PLAY = gage.next().toLowerCase();
 		
-			while(!Playbook.IsValidPlay(PLAY)){
-				out.println("Text Error: Please Retry");
-				out.println("Eligible Plays: run, pass, or fg");
-				PLAY = gage.next().toLowerCase();
+		String PLAY = gage.next().toLowerCase();
+			
+		while(!Playbook.IsValidPlay(PLAY)){
+		out.println("Text Error: Please Retry");
+		out.println("Eligible Plays: run, pass, or fg");
+		PLAY = gage.next().toLowerCase();
 			}
 			
 			return PLAY;
@@ -48,4 +48,4 @@ public class Team {
 	}
 	
 	
-}
+

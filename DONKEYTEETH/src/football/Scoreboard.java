@@ -218,7 +218,14 @@ public String UpdateScoreboardAfterPlay(int yardsgained, String PLAY){
 	}
 	Jumbotron="";
 	Megatron= "";
-	if(PLAY.equals("pass")){
+	if(Playbook.IsRun(PLAY)){
+		if(yardsgained > 0)
+			Megatron=("Gain of " + (int)yardsgained + " yards on the run");
+		else if (yardsgained == 0)
+			Megatron=("No Gain on the Play");
+		else if (yardsgained < 0) 
+			Megatron=("Loss of " + Math.abs((int)yardsgained) + " on the play");
+	}else{
 		if(yardsgained > 0)
 			Megatron= ("Pass Complete for " + (int)yardsgained + " yards");
 		else if (yardsgained == 0)
@@ -226,15 +233,7 @@ public String UpdateScoreboardAfterPlay(int yardsgained, String PLAY){
 		else if (yardsgained < 0) 
 			Megatron=("Quarterback is sacked on the play!!!!!!");
 		}
-	else if(PLAY.equals("run")){
-		if(yardsgained > 0)
-			Megatron=("Gain of " + (int)yardsgained + " yards on the run");
-		else if (yardsgained == 0)
-			Megatron=("No Gain on the Play");
-		else if (yardsgained < 0) 
-			Megatron=("Loss of " + Math.abs((int)yardsgained) + " on the play");
-			
-		}
+	
 	
 	if (yardline <= 0) {
 		Jumbotron ="TOUCHDOWN";
