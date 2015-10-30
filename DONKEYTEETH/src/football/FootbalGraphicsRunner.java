@@ -49,7 +49,7 @@ public class FootbalGraphicsRunner extends JFrame {
 		btn1.setForeground(Color.BLUE);
 		btn1.isBorderPainted();
 		//btn1.setActionCommand(runner.PLAY= "run");
-		//sims.nextPlay(PLAY, Scoreboard1.yardline);
+		//sims.nextPlay(PLAY, Scoreboard1.yardline); hi
 		btn2.setBounds(200, 150, 100, 50);
 		btn2.setForeground(Color.BLUE);
 		btn2.isBorderPainted();
