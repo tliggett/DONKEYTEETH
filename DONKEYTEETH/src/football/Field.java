@@ -12,7 +12,7 @@ import java.awt.Canvas;
 
 public class Field extends Canvas
 {
-   public Field()    // hi constructor - sets up the class
+   public Field()    // constructor - sets up the class
    {
      setSize(800,600);
      setBackground(Color.GRAY);
