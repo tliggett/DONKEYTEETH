@@ -55,7 +55,7 @@ public class footballRunnerII {
 		Scoreboard1.StartGame();
 		
 		while (Scoreboard1.GameIsAlive()){
-			out.println("--------------");
+			Scoreboard1.FieldGraphic();
 			out.println(Scoreboard1.ReportScore());
 			out.println(Scoreboard1.ReportDownAndDistance());			
 			out.println(Scoreboard1.ReportYardsToEndzone());

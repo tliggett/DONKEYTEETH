@@ -310,7 +310,12 @@ public String ReportDriveResult(){
 	
 	
 	if(Drives < 0){
-		this.Jumbotron = ("OVERTIME");
+		if(HomeScore == AwayScore){
+			this.Jumbotron += ("\nOVERTIME");
+		}
+		else {
+			this.Jumbotron += ("\nGAME OVER");
+		}
 		
 	}
 	else{	
@@ -318,4 +323,29 @@ public String ReportDriveResult(){
 	}
 	return Jumbotron;
 	}
+
+
+public void FieldGraphic(){
+	out.print("||");
+	for(int i = 1; i <=100; i++ ){
+		if(i == 100-yardline){
+		out.print("0");
+		}
+		if(i== 100-yardline+yardstofirst){
+		out.print("|");	
+			
+		}
+		else{
+		out.print("-");
+		
+		}
+		
+	}
+	out.println("||");
+	out.print("  G        10        20        30        40        50        40        30        20        10         G");
+	out.println();
 }
+
+
+}
+
