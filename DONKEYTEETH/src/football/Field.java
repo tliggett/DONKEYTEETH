@@ -14,8 +14,8 @@ public class Field extends Canvas
 {
    public Field()    //constructor - sets up the class
    {
-      setSize(800,600);
-      setBackground(Color.GRAY);
+     setSize(800,600);
+     setBackground(Color.GRAY);
       setVisible(true);
    }
 
@@ -50,7 +50,7 @@ public class Field extends Canvas
       
       window.setColor(Color.WHITE);
       
-      window.setColor(Color.BLACK);
+      window.setColor(Color.WHITE);
       window.fillRect(100, 50, 1200, 100);
       
       Image img = null;
