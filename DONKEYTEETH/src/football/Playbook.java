@@ -19,14 +19,19 @@ public class Playbook {
 				isRun = playlist[i].isRun;
 				return true;
 			}
+			
+			
 
 		}
 		if (PLAY.equals("fg"))
 			return true;
-		if (PLAY.equals("punt"))
+		if (PLAY.equals("punt")){
 			return true;
+		}
+		
 		return false;
-	}
+		}
+
 
 
 	public static boolean IsRun(String PLAY ){

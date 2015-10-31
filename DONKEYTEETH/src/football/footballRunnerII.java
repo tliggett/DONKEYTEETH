@@ -57,6 +57,8 @@ public class footballRunnerII {
 		while (Scoreboard1.GameIsAlive()){
 			Scoreboard1.FieldGraphic();
 			out.println(Scoreboard1.ReportScore());
+			out.println(Scoreboard1.ReportQuarter());
+			out.println(Scoreboard1.ReportClock());
 			out.println(Scoreboard1.ReportDownAndDistance());			
 			out.println(Scoreboard1.ReportYardsToEndzone());
 			out.println(Scoreboard1.PromptForPlay());
@@ -64,6 +66,7 @@ public class footballRunnerII {
 			yds = donkeyteeth.nextPlay(PLAY, Scoreboard1.yardline);
 			String Result = Scoreboard1.UpdateScoreboardAfterPlay(yds,PLAY);
 			out.println(Result);
+			Scoreboard1.CheckForQuarterChange();
 			if(Scoreboard1.Jumbotron.length()> 0){
 				out.println("===============");
 				out.println(Scoreboard1.ReportDriveResult());
@@ -86,44 +89,6 @@ public class footballRunnerII {
 
 	public static void main(String args[]) throws IOException{
 		
-		
-			
-			
-		
-		// The name of the file to open.
-        String fileName = "data/temp.txt";
-
-        // This will reference one line at a time
-        String line = null;
-
-        try {
-            // FileReader reads text files in the default encoding.
-            FileReader fileReader = 
-                new FileReader(fileName);
-
-            // Always wrap FileReader in BufferedReader.
-            BufferedReader bufferedReader = 
-                new BufferedReader(fileReader);
-
-            while((line = bufferedReader.readLine()) != null) {
-                System.out.println(line);
-            }   
-
-            // Always close files.
-            bufferedReader.close();         
-        }
-        catch(FileNotFoundException ex) {
-            System.out.println(
-                "Unable to open file '" + 
-                fileName + "'");                
-        }
-        catch(IOException ex) {
-            System.out.println(
-                "Error reading file '" 
-                + fileName + "'");                  
-            // Or we could just do this: 
-            // ex.printStackTrace();
-        }
         
         footballRunnerII run = new footballRunnerII();
 	}
