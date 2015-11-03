@@ -44,7 +44,7 @@ public class Playbook {
 		
 		
 	}
-	public void readfile() throws FileNotFoundException {
+	public void readfile() throws FileNotFoundException, NumberFormatException {
 		Scanner scan = new Scanner(new File ("data/playslist.txt"));
 		// The name of the file to open.
 		String fileName = "data/playslist.txt";
@@ -72,8 +72,10 @@ public class Playbook {
 				
 				for (int s = 0; s <= 99; s++) {
 					 String [] list = new String [100];
+					 String parsable = "0";
 					 list[s] = ls[s + 2];
-					 playlist[i].odds[s] = Integer.parseInt(list[s]);
+					 parsable = list[s];
+					 playlist[i].odds[s] = Integer.parseInt(parsable);
 				}
 				Arrays.sort(playlist[i].odds);
 				i++;

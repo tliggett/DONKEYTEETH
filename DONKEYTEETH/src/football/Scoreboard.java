@@ -17,16 +17,18 @@ public class Scoreboard {
 	public static double clock = 15;
 	public static int quarter = 1;
 	public int quarterlength = 15;
+	public static int momentum = 0;
 
 	public void StartGame() {
 
 		HomeScore = 0;
 		AwayScore = 0;
+		momentum = 10;
 		HomeTeam = new Team();
-		HomeTeam.name = "THE Ohio State University";// "Green Bay Packers";
+		HomeTeam.name = "Minnesota Vikings";
 		HomeTeam.isCPU = true;
 		AwayTeam = new Team();
-		AwayTeam.name = "Rosemount Monsters";// "Minnesota Vikings";
+		AwayTeam.name = "Green Bay Packers";
 		AwayTeam.isCPU = true;
 		HomeHasBall = true;
 		Megatron = "";
@@ -43,6 +45,20 @@ public class Scoreboard {
 
 	}
 	
+	
+	
+	public void updateMomentum(int sway){
+		if(HomeHasBall){
+			momentum += sway;
+			
+		}else{
+			
+			momentum -= sway;
+		
+	}
+		
+		
+	}
 	public void updateClock(double time){
 		clock = clock - time;
 		if(clock <= 0){
@@ -52,10 +68,10 @@ public class Scoreboard {
 			
 		}
 		
-		
+	
 		
 	}
-	
+	 
 	
 	private boolean QuarterChanged = false;
 	

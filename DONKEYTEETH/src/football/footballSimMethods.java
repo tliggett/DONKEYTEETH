@@ -37,14 +37,19 @@ public class footballSimMethods {
 	
 	public int RegularPlay(int i){
 		int yods = 0;
-		int rods = 0;		
+		int rods = 0;
+		int m = 0;
 		String sods = "";
 		rods = (int)(100*(Math.random()));
 		for(int o = 0; o <= 100; o++)
 		if (rods == o) 
 	        
-			yods = plays[i].odds[o];
-
+			m = o + Scoreboard.momentum;
+			if(m > 99){
+				m=99;
+			}
+			yods = plays[i].odds[m];
+			
 			return yods;
 		
 	}
