@@ -36,14 +36,15 @@ public class footballSimMethods {
 	
 	
 	public int RegularPlay(int i){
-		int yods, rods;
+		int yods = 0;
+		int rods = 0;		
 		String sods = "";
 		rods = (int)(100*(Math.random()));
 		for(int o = 0; o <= 100; o++)
 		if (rods == o) 
 	        
-			sods = plays[i].odds[o];
-			yods = Integer.parseInt(sods);
+			yods = plays[i].odds[o];
+
 			return yods;
 		
 	}

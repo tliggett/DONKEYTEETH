@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Playbook {
@@ -70,9 +71,11 @@ public class Playbook {
 				
 				
 				for (int s = 0; s <= 99; s++) {
-					playlist[i].odds[s] = ls[s + 2];
-
+					 String [] list = new String [100];
+					 list[s] = ls[s + 2];
+					 playlist[i].odds[s] = Integer.parseInt(list[s]);
 				}
+				Arrays.sort(playlist[i].odds);
 				i++;
 			}
 
