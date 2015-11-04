@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.xml.soap.Text;
 
 import java.awt.Color;
 import java.awt.Canvas;
@@ -60,7 +61,6 @@ public class Field extends Canvas
     	  e.printStackTrace();
       }
       window.drawImage(img, 601, 450, 199,199, null);
-     
-
+      
    }
 }

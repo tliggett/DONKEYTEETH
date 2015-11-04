@@ -17,7 +17,7 @@ public class Scoreboard {
 	Scanner gage = new Scanner(System.in);
 	public static double clock = 15;
 	public static int quarter = 1;
-	public int quarterlength = 15;
+	public int quarterlength = 5;
 	
 	
 	
@@ -27,25 +27,26 @@ public class Scoreboard {
 		AwayScore = 0;
 		HomeTeam = new Team();
 		HomeTeam.name = "Minnesota Vikings";
-		HomeTeam.isCPU = true;
+		HomeTeam.isCPU = false;
 		HomeTeam.overall = 20;
 		HomeTeam.momentum = 10;
 		AwayTeam = new Team();
 		AwayTeam.name = "Green Bay Packers";
-		AwayTeam.isCPU = true;
+		AwayTeam.isCPU = false;
 		AwayTeam.overall = 0;
 		AwayTeam.momentum = 0;
 		HomeHasBall = true;
 		Megatron = "";
 		Jumbotron = "";
-		out.println("How long are the quarters?");
-		quarterlength = gage.nextInt();
+		//out.println("How long are the quarters?");
+		//quarterlength = gage.nextInt();
 		clock = 100*quarterlength;
 		quarter = 1;
 		setQuarterLength(quarterlength);
-		out.println("How many players?");
-		int players = gage.nextInt();
-		SetTeams(players);
+		//out.println("How many players?");
+		int players = 2;
+		//int players = gage.nextInt();
+		//SetTeams(players);
 		StartDrive();
 
 	}
