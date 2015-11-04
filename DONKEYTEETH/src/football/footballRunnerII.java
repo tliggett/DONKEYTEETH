@@ -63,6 +63,7 @@ public class footballRunnerII {
 			out.println(Scoreboard1.ReportYardsToEndzone());
 			out.println(Scoreboard1.PromptForPlay());
 			PLAY = Scoreboard1.nextPlay();
+			Scoreboard1.setPower();
 			yds = donkeyteeth.nextPlay(PLAY, Scoreboard1.yardline);
 			String Result = Scoreboard1.UpdateScoreboardAfterPlay(yds,PLAY);
 			out.println(Result);

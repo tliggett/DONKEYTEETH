@@ -12,6 +12,8 @@ import java.math.*;
 public class footballSimMethods {
 	Playbook Playbook1 = new Playbook();Play [] plays = Playbook1.playlist;
 	
+	
+	
 	public int nextPlay(String PLAY, int yardline)
 	{ 
 		
@@ -30,7 +32,7 @@ public class footballSimMethods {
 	}
 	
 		
-		
+	
 	
 	
 	
@@ -41,12 +43,16 @@ public class footballSimMethods {
 		int m = 0;
 		String sods = "";
 		rods = (int)(100*(Math.random()));
+		
 		for(int o = 0; o <= 100; o++)
-		if (rods == o) 
-	        
-			m = o + Scoreboard.momentum;
+			if (rods == o) 
+			m = o + Scoreboard.power;
 			if(m > 99){
 				m=99;
+			}
+			if(m<0){
+				m = 0;
+				
 			}
 			yods = plays[i].odds[m];
 			

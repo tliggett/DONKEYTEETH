@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class Scoreboard {
 	public int yardline = -1;
+	public static int power =0;
 	int yardstofirst = -1;
 	int down = -1;
 	String Megatron = "";
@@ -17,19 +18,23 @@ public class Scoreboard {
 	public static double clock = 15;
 	public static int quarter = 1;
 	public int quarterlength = 15;
-	public static int momentum = 0;
-
+	
+	
+	
 	public void StartGame() {
 
 		HomeScore = 0;
 		AwayScore = 0;
-		momentum = 10;
 		HomeTeam = new Team();
 		HomeTeam.name = "Minnesota Vikings";
 		HomeTeam.isCPU = true;
+		HomeTeam.overall = 20;
+		HomeTeam.momentum = 10;
 		AwayTeam = new Team();
 		AwayTeam.name = "Green Bay Packers";
 		AwayTeam.isCPU = true;
+		AwayTeam.overall = 0;
+		AwayTeam.momentum = 0;
 		HomeHasBall = true;
 		Megatron = "";
 		Jumbotron = "";
@@ -47,13 +52,35 @@ public class Scoreboard {
 	
 	
 	
+	public void setPower(){
+		int difference = HomeTeam.overall - AwayTeam.overall;
+		HomeTeam.power = difference + HomeTeam.momentum;
+		
+		difference = AwayTeam.overall - HomeTeam.overall;
+		AwayTeam.power = difference + AwayTeam.momentum;
+		
+		
+		if(HomeHasBall){
+			power = HomeTeam.power;
+			
+		}else{
+			power = AwayTeam.power;
+			
+		}
+		
+		
+		
+		
+	}
+	
+	
 	public void updateMomentum(int sway){
 		if(HomeHasBall){
-			momentum += sway;
+			HomeTeam.momentum += sway;
 			
 		}else{
 			
-			momentum -= sway;
+			AwayTeam.momentum += sway;
 		
 	}
 		
@@ -174,19 +201,23 @@ public class Scoreboard {
 			yardsbeforeturnover = donkeyteeth.nextPlay(PLAY, yardline);
 			yardline -= yardsbeforeturnover;
 			yardline1 = 100 - yardline;
+			updateMomentum(-1);
 			HomeHasBall = !HomeHasBall;
 			if (yardline1 < 0) {
 				Jumbotron = ("He's gonna take it in for six! Touchdown!");
 				Megatron = ("The Fumble was recovered by the defense!");
 				UpdateScore(7);
 				updateClock(25);
+				updateMomentum(1);
 				HomeHasBall = !HomeHasBall;
+				updateMomentum(-1);
 				StartDrive();
 				return Megatron;
 			} else {
 				Megatron = ("FUMBLE Recovered by the Defense!!!");
 				Jumbotron = ("It's going the other way!");
 				updateClock(15);
+				updateMomentum(1);
 				StartDrive();
 				yardline = yardline1;
 				return Megatron;
@@ -195,21 +226,24 @@ public class Scoreboard {
 			yardsbeforeturnover = (int) donkeyteeth.nextPlay(PLAY, yardline);
 			yardline -= yardsbeforeturnover;
 			yardline1 = 100 - yardline;
+			updateMomentum(-1);
 			HomeHasBall = !HomeHasBall;
 			if (yardline1 < 0) {
 				Jumbotron = ("PICK SIX!!!!!");
 				Megatron = ("The Pass is intercepted, he's got green grass the other way!");
 				UpdateScore(7);
 				updateClock(50);
+				updateMomentum(1);
 				HomeHasBall = !HomeHasBall;
+				updateMomentum(-1);
 				StartDrive();
-				
 				return Megatron;
 			} else {
 				Megatron = ("Pass is intercepted!!!");
 				Jumbotron = ("It's going the other way!");
 				updateClock(25);
 				StartDrive();
+				updateMomentum(1);
 				yardline = yardline1;
 				return Megatron;
 			}
@@ -225,6 +259,7 @@ public class Scoreboard {
 			}
 			if (yardsgained == 0) {
 				Jumbotron = ("The Field Goal was missed!!! No good!");
+				updateMomentum(-1);
 				HomeHasBall = !HomeHasBall;
 				yardline1 = 100 - yardline;
 				updateClock(10);
@@ -237,12 +272,14 @@ public class Scoreboard {
 			Megatron = "They Decide to punt with " + (yardline) + " to go to the endzone.";
 			if (yardsgained >= yardline) {
 				Jumbotron = ("Punt goes for a touchback.");
+				updateMomentum(-1);
 				HomeHasBall = !HomeHasBall;
 				updateClock(20);
 				StartDrive();
 			} else {
 				Jumbotron = ("Punted for " + yardsgained + " yards.");
 				yardline = yardline - yardsgained;
+				updateMomentum(-1);
 				HomeHasBall = !HomeHasBall;
 				yardline1 = 100 - yardline;
 				updateClock(25);
@@ -292,24 +329,29 @@ public class Scoreboard {
 				}else if (yardsgained < 0){
 					Megatron = ("Quarterback is sacked on the play!!!!!!");
 					updateClock(50);
+					updateMomentum(-1);
 				}
 			}
 
 			if (yardline <= 0) {
 				Jumbotron = "TOUCHDOWN";
 				UpdateScore(7);
+				updateMomentum(1);
 				HomeHasBall = !HomeHasBall;
 				StartDrive();
 			}
 			if (yardline >= 100) {
 				Jumbotron = ("SAFETY");
+				updateMomentum(-1);
 				HomeHasBall = !HomeHasBall;
 				UpdateScore(2);
 				StartDrive();
 			}
 			if (down > 4) {
 				Jumbotron = ("TURNOVER ON DOWNS");
+				updateMomentum(-1);
 				HomeHasBall = !HomeHasBall;
+				updateMomentum(1);
 				yardline1 = 100 - yardline;
 				StartDrive();
 				yardline = yardline1;
