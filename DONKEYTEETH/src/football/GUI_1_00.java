@@ -96,10 +96,25 @@ public class GUI_1_00 extends JFrame {
 		lblYardline.setBounds(49, 425, 445, 16);
 		contentPane.add(lblYardline);
 		
+		
+		
+		
+		JLabel lblResult  = new JLabel(Result);
+		lblResult.setBounds(49, 425, 445, 16);
+		contentPane.add(lblResult);
+		
+		txtChooseYourPlay = new JTextField();
+		txtChooseYourPlay.setText("Choose Your Play");
+		txtChooseYourPlay.setBounds(159, 164, 130, 26);
+		contentPane.add(txtChooseYourPlay);
+		txtChooseYourPlay.setColumns(10);
+		
+		
 		JButton btnNewButton = new JButton("GO!!!!");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PLAY = Scoreboard1.nextPlay();
+				if(JTextField.(txtChooseYourPlay))
+				PLAY.equals(txtChooseYourPlay);
 				Scoreboard1.setPower();
 				yds = donkeyteeth.nextPlay(PLAY, Scoreboard1.yardline);
 				Result = Scoreboard1.UpdateScoreboardAfterPlay(yds,PLAY);
@@ -115,15 +130,6 @@ public class GUI_1_00 extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		
-		JLabel lblResult  = new JLabel(Result);
-		lblResult.setBounds(49, 425, 445, 16);
-		contentPane.add(lblResult);
-		
-		txtChooseYourPlay = new JTextField();
-		txtChooseYourPlay.setText("Choose Your Play");
-		txtChooseYourPlay.setBounds(159, 164, 130, 26);
-		contentPane.add(txtChooseYourPlay);
-		txtChooseYourPlay.setColumns(10);
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setMaximumRowCount(20);
