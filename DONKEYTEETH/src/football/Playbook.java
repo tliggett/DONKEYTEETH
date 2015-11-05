@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Playbook {
@@ -19,14 +20,19 @@ public class Playbook {
 				isRun = playlist[i].isRun;
 				return true;
 			}
+			
+			
 
 		}
 		if (PLAY.equals("fg"))
 			return true;
-		if (PLAY.equals("punt"))
+		if (PLAY.equals("punt")){
 			return true;
+		}
+		
 		return false;
-	}
+		}
+
 
 
 	public static boolean IsRun(String PLAY ){
@@ -38,7 +44,7 @@ public class Playbook {
 		
 		
 	}
-	public void readfile() throws FileNotFoundException {
+	public void readfile() throws FileNotFoundException, NumberFormatException {
 		Scanner scan = new Scanner(new File ("data/playslist.txt"));
 		// The name of the file to open.
 		String fileName = "data/playslist.txt";
@@ -65,9 +71,13 @@ public class Playbook {
 				
 				
 				for (int s = 0; s <= 99; s++) {
-					playlist[i].odds[s] = ls[s + 2];
-
+					 String [] list = new String [100];
+					 String parsable = "0";
+					 list[s] = ls[s + 2];
+					 parsable = list[s];
+					 playlist[i].odds[s] = Integer.parseInt(parsable);
 				}
+				Arrays.sort(playlist[i].odds);
 				i++;
 			}
 

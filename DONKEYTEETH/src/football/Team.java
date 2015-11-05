@@ -5,7 +5,9 @@ java.lang.System.out;
 import java.util.Scanner;
 public class Team {
 
-	
+	public int overall = 5; 
+	public int power = 0;
+	public int momentum = 0;
 	public String name = "";   
 	public boolean isCPU = false;
 	double rods;

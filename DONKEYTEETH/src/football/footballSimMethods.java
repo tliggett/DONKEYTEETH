@@ -10,8 +10,9 @@ import java.io.IOException;
 import java.math.*;
 
 public class footballSimMethods {
-	Playbook Playbook1 = new Playbook();
-	Play [] plays = Playbook1.playlist;
+	Playbook Playbook1 = new Playbook();Play [] plays = Playbook1.playlist;
+	
+	
 	
 	public int nextPlay(String PLAY, int yardline)
 	{ 
@@ -31,20 +32,30 @@ public class footballSimMethods {
 	}
 	
 		
-		
+	
 	
 	
 	
 	
 	public int RegularPlay(int i){
-		int yods, rods;
+		int yods = 0;
+		int rods = 0;
+		int m = 0;
 		String sods = "";
 		rods = (int)(100*(Math.random()));
+		
 		for(int o = 0; o <= 100; o++)
-		if (rods == o) 
-	        
-			sods = plays[i].odds[o];
-			yods = Integer.parseInt(sods);
+			if (rods == o) 
+			m = o + Scoreboard.power;
+			if(m > 99){
+				m=99;
+			}
+			if(m<0){
+				m = 0;
+				
+			}
+			yods = plays[i].odds[m];
+			
 			return yods;
 		
 	}
