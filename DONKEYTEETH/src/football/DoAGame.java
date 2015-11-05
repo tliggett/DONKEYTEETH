@@ -25,7 +25,7 @@ public class DoAGame{
 	Scanner gage = new Scanner(System.in);
 	
 		
-		//hi
+		
 	
 	
 	public void DoAGame() throws FileNotFoundException
