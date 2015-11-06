@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import football.footballSimMethods;
 
 
-public class footballRunnerII {
+public class GameSimulator {
 	
 
 	int yds, yds2go, intDist, intDist2, intDist3, intDist4, intDown, yardsGained, intDist2Touch;
@@ -22,7 +22,7 @@ public class footballRunnerII {
 	char r, p;
 	String play;
 	Scanner gage = new Scanner(System.in);
-	public footballRunnerII() throws FileNotFoundException {
+	public void GameSim() throws FileNotFoundException {
 		boolean playagain = true;
 		while (playagain) {
 		DoAGame();
@@ -51,8 +51,7 @@ public class footballRunnerII {
 		yds = 0;*/
 		
 		
-		Playbook1.readfile();
-		Scoreboard1.StartGame();
+		
 		
 		while (Scoreboard1.GameIsAlive()){
 			Scoreboard1.FieldGraphic();
@@ -79,18 +78,6 @@ public class footballRunnerII {
 		}
 		
 		out.println("Final Score: " + Scoreboard1.ReportScore());
-	}
+	}}
 
 	
-	
-	private void Switch(String down2) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public static void main(String args[]) throws IOException{
-		
-        
-        footballRunnerII run = new footballRunnerII();
-	}
-}
