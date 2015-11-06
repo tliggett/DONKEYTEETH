@@ -174,12 +174,12 @@ public class Scoreboard {
 
 	}
 
-	public String nextPlay() {
+	public String nextPlay(String play) {
 
 		if (HomeHasBall) {
-			return HomeTeam.nextPlay(this);
+			return HomeTeam.nextPlay(this, play);
 		} else {
-			return AwayTeam.nextPlay(this);
+			return AwayTeam.nextPlay(this, play);
 
 		}
 

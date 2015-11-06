@@ -29,31 +29,25 @@ public class GUI_1_00 extends JFrame {
 	String play;
 	String Result = "";
 	Scanner gage = new Scanner(System.in);
-	String score = "";
+	
 	Playbook Playbook1 = new Playbook();
 	footballSimMethods donkeyteeth = new footballSimMethods();
-	static Scoreboard Scoreboard1 = new Scoreboard();
-	GameSimulator game = new GameSimulator();
-	
-	
+	Scoreboard Scoreboard1 = new Scoreboard();
 	private JTextField txtChooseYourPlay;
-	static boolean alive = Scoreboard1.GameIsAlive();
+	
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-	
-				
 				try {
 					GUI_1_00 frame = new GUI_1_00();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				}
-			
+			}
 		});
 	}
 
@@ -63,8 +57,9 @@ public class GUI_1_00 extends JFrame {
 	public GUI_1_00() throws FileNotFoundException {
 		
 		
-		Scoreboard1.StartGame();
+		
 		Playbook1.readfile();
+		Scoreboard1.StartGame();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 500);
@@ -81,9 +76,9 @@ public class GUI_1_00 extends JFrame {
 		lblNewLabel.setBounds(33, 17, 106, 16);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblScore = new JLabel(Scoreboard1.ReportScore());
-		lblScore.setBounds(33, 64, 445, 16);
-		contentPane.add(lblScore);
+		JLabel lblNewLabel_1 = new JLabel(Scoreboard1.ReportScore());
+		lblNewLabel_1.setBounds(33, 64, 445, 16);
+		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblQuarter = new JLabel(Scoreboard1.ReportQuarter());
 		lblQuarter.setBounds(32, 92, 445, 16);
@@ -108,16 +103,21 @@ public class GUI_1_00 extends JFrame {
 		lblResult.setBounds(49, 425, 445, 16);
 		contentPane.add(lblResult);
 		
-		txtChooseYourPlay = new JTextField();
-		txtChooseYourPlay.setText("Choose Your Play");
-		txtChooseYourPlay.setBounds(159, 164, 130, 26);
-		contentPane.add(txtChooseYourPlay);
-		txtChooseYourPlay.setColumns(10);
+		/*JComboBox comboBox = new JComboBox();
+		comboBox.setMaximumRowCount(20);
+		comboBox.setBounds(33, 164, 270, 27);
+		for(int i =0; i >18; i++){
+		comboBox.addItem(Playbook.playlist[i]);
+		
+		
+		
+		contentPane.add(comboBox);*/
 		
 		
 		JButton btnNewButton = new JButton("GO!!!!");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				PLAY.equals(txtChooseYourPlay);
 				Scoreboard1.setPower();
 				yds = donkeyteeth.nextPlay(PLAY, Scoreboard1.yardline);
@@ -128,43 +128,17 @@ public class GUI_1_00 extends JFrame {
 			
 		});
 		
-	
+		
 		
 		btnNewButton.setBounds(304, 164, 117, 29);
 		contentPane.add(btnNewButton);
 		
 		
 		
-		while(Scoreboard1.GameIsAlive()){
-			
-			lblScore.setText(Scoreboard1.ReportScore());
-			lblQuarter.setText(Scoreboard1.ReportQuarter());
-			lblClock.setText(Scoreboard1.ReportClock());
-			lblDownDist.setText(Scoreboard1.ReportDownAndDistance());
-			lblYardline.setText(Scoreboard1.ReportYardsToEndzone());
-			lblResult.setText(Result);
-			
-		}
-		
-	}
 		
 		
 		
-		//JComboBox comboBox = new JComboBox();
-		//comboBox.setMaximumRowCount(20);
-		//comboBox.setBounds(33, 164, 270, 27);
-		//for(int i =0; i >18; i++){
-		//comboBox.addItem(Playbook.playlist[i]);
-		
-		
-		
-		//contentPane.add(comboBox);
-		
-		
-		
-		
-		
-		}
+		}}
 
 		
 		

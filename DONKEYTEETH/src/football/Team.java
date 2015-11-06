@@ -13,7 +13,7 @@ public class Team {
 	double rods;
 	Scanner gage = new Scanner(System.in);
 	
-	public String nextPlay(Scoreboard sb){
+	public String nextPlay(Scoreboard sb, String play){
 		
 		if(isCPU){
 			if(sb.down == 4){
@@ -32,13 +32,9 @@ public class Team {
 				return "pass";
 		}
 		
-		String PLAY = gage.next().toLowerCase();
+		String PLAY = play;
 			
-		while(!Playbook.IsValidPlay(PLAY)){
-		out.println("Text Error: Please Retry");
-		out.println("Eligible Plays: run, pass, or fg");
-		PLAY = gage.next().toLowerCase();
-			}
+		
 			
 			return PLAY;
 			
