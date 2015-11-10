@@ -127,7 +127,7 @@ public class FootbalGraphicsRunner extends JFrame {
 		getContentPane().add(btn3);
 		getContentPane().add(btn4);
 		getContentPane().add(prompt);
-		getContentPane().add(new Field());
+		getContentPane().add(Field.);
 	
 		setVisible(true);
 	   	        

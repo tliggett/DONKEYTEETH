@@ -128,10 +128,22 @@ public class GUI_1_50 extends JFrame {
 		
 		
 		contentPane.add(comboBox);
-		
+		//contentPane.add(Field());
 		
 		JButton btnNewButton = new JButton("GO!!!!");
 		btnNewButton.addActionListener(new ActionListener() {
+			public void updateStuff(){
+				lblNewLabel_1.setText(Scoreboard1.ReportScore());
+				lblQuarter.setText(Scoreboard1.ReportQuarter());
+				lblClock.setText(Scoreboard1.ReportClock());
+				lblDownDist.setText(Scoreboard1.ReportDownAndDistance());
+				lblYardline.setText(Scoreboard1.ReportYardsToEndzone());
+				lblPrompt.setText(Scoreboard1.PromptForPlay());
+				
+				
+				
+			}
+			
 			public void actionPerformed(ActionEvent e) {
 				while(Scoreboard1.TeamWithBall().isCPU){
 					PLAY = Scoreboard1.nextPlay(play);
@@ -140,12 +152,7 @@ public class GUI_1_50 extends JFrame {
 					String Result = Scoreboard1.UpdateScoreboardAfterPlay(yds,PLAY);
 					lblResult.setText(Result);
 					Scoreboard1.CheckForQuarterChange();
-					lblNewLabel_1.setText(Scoreboard1.ReportScore());
-					lblQuarter.setText(Scoreboard1.ReportQuarter());
-					lblClock.setText(Scoreboard1.ReportClock());
-					lblDownDist.setText(Scoreboard1.ReportDownAndDistance());
-					lblYardline.setText(Scoreboard1.ReportYardsToEndzone());
-					lblPrompt.setText(Scoreboard1.PromptForPlay());
+					updateStuff();
 					if(Scoreboard1.Jumbotron.length()> 0){
 						
 						lblResult.setText(Result + "\n" + Scoreboard1.ReportDriveResult());
@@ -158,24 +165,19 @@ public class GUI_1_50 extends JFrame {
 				String Result = Scoreboard1.UpdateScoreboardAfterPlay(yds,PLAY);
 				lblResult.setText(Result);
 				Scoreboard1.CheckForQuarterChange();
-				lblNewLabel_1.setText(Scoreboard1.ReportScore());
-				lblQuarter.setText(Scoreboard1.ReportQuarter());
-				lblClock.setText(Scoreboard1.ReportClock());
-				lblDownDist.setText(Scoreboard1.ReportDownAndDistance());
-				lblYardline.setText(Scoreboard1.ReportYardsToEndzone());
-				lblPrompt.setText(Scoreboard1.PromptForPlay());
+				updateStuff();
 				
 				if(Scoreboard1.Jumbotron.length()> 0){
 				
 					lblResult.setText(Result + "\n" + Scoreboard1.ReportDriveResult());
 			
 				
-			}}
+			}
+				}
 		
 			
 			
 		});
-		
 		
 		
 		btnNewButton.setBounds(304, 164, 117, 29);
@@ -186,5 +188,6 @@ public class GUI_1_50 extends JFrame {
 		
 		
 	}
-
+	
+	
 }
