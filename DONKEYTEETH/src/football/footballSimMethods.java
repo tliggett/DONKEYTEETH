@@ -101,7 +101,7 @@ public class footballSimMethods {
 				return 1;
 			else return 0;
 		if (yardline>40)
-			if(rods<50)
+			if(rods<40)
 				return 1;
 			else return 0;
 		if (yardline>30)

@@ -28,11 +28,11 @@ public class Scoreboard {
 		HomeTeam = new Team();
 		HomeTeam.name = "Minnesota Vikings";
 		HomeTeam.isCPU = false;
-		HomeTeam.overall = 0;
-		HomeTeam.momentum = 0;
+		HomeTeam.overall = 20;
+		HomeTeam.momentum = 20;
 		AwayTeam = new Team();
 		AwayTeam.name = "Green Bay Packers";
-		AwayTeam.isCPU = true;
+		AwayTeam.isCPU = false;
 		AwayTeam.overall = 0;
 		AwayTeam.momentum = 0;
 		HomeHasBall = true;
