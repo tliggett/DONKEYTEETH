@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Playbook {
 	public static Play[] playlist = new Play[17];
-	static int isRun = 0;
+	public static int isRun = 0;
 	
 	
 	public static boolean IsValidPlay(String PLAY) {
@@ -36,8 +36,13 @@ public class Playbook {
 
 
 	public static boolean IsRun(String PLAY ){
-		if(isRun == 1)
-				return true;
+		for (int i = playlist.length-1; i >= 0; i--) {
+			if (playlist[i].name.equals(PLAY)){
+				isRun = playlist[i].isRun;
+					if(isRun == 1){
+						return true;
+						
+					}}}
 		
 		return false;
 		

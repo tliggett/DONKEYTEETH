@@ -28,11 +28,11 @@ public class Scoreboard {
 		HomeTeam = new Team();
 		HomeTeam.name = "Minnesota Vikings";
 		HomeTeam.isCPU = false;
-		HomeTeam.overall = 20;
-		HomeTeam.momentum = 10;
+		HomeTeam.overall = 0;
+		HomeTeam.momentum = 0;
 		AwayTeam = new Team();
 		AwayTeam.name = "Green Bay Packers";
-		AwayTeam.isCPU = false;
+		AwayTeam.isCPU = true;
 		AwayTeam.overall = 0;
 		AwayTeam.momentum = 0;
 		HomeHasBall = true;
@@ -100,6 +100,14 @@ public class Scoreboard {
 		
 	}
 	 
+	public Team TeamWithBall(){
+		if(HomeHasBall){
+			return HomeTeam;
+			
+		}
+		
+		return AwayTeam;
+	}
 	
 	private boolean QuarterChanged = false;
 	

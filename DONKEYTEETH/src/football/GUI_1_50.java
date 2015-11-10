@@ -92,6 +92,10 @@ public class GUI_1_50 extends JFrame {
 		lblYardline.setBounds(49, 390, 445, 16);
 		contentPane.add(lblYardline);
 		
+		JLabel lblPrompt  = new JLabel(Scoreboard1.PromptForPlay());
+		lblPrompt.setBounds(49, 350, 445, 16);
+		contentPane.add(lblPrompt);
+		
 		
 		
 		
@@ -103,7 +107,21 @@ public class GUI_1_50 extends JFrame {
 		comboBox.setMaximumRowCount(20);
 		comboBox.setBounds(33, 164, 270, 27);
 		comboBox.addItem("run");
+		comboBox.addItem("counter");
 		comboBox.addItem("pass");
+		comboBox.addItem("dive");
+		comboBox.addItem("pitch");
+		comboBox.addItem("powero");
+		comboBox.addItem("reverse");
+		comboBox.addItem("sweep");
+		comboBox.addItem("sneak");
+		comboBox.addItem("screen");
+		comboBox.addItem("slants");
+		comboBox.addItem("verticals");
+		comboBox.addItem("curls");
+		comboBox.addItem("hailmary");
+		comboBox.addItem("flag");
+		comboBox.addItem("playaction");
 		comboBox.addItem("punt");
 		comboBox.addItem("fg");
 		
@@ -115,8 +133,25 @@ public class GUI_1_50 extends JFrame {
 		JButton btnNewButton = new JButton("GO!!!!");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				while(Scoreboard1.TeamWithBall().isCPU){
+					PLAY = Scoreboard1.nextPlay(play);
+					Scoreboard1.setPower();
+					yds = donkeyteeth.nextPlay(PLAY, Scoreboard1.yardline);
+					String Result = Scoreboard1.UpdateScoreboardAfterPlay(yds,PLAY);
+					lblResult.setText(Result);
+					Scoreboard1.CheckForQuarterChange();
+					lblNewLabel_1.setText(Scoreboard1.ReportScore());
+					lblQuarter.setText(Scoreboard1.ReportQuarter());
+					lblClock.setText(Scoreboard1.ReportClock());
+					lblDownDist.setText(Scoreboard1.ReportDownAndDistance());
+					lblYardline.setText(Scoreboard1.ReportYardsToEndzone());
+					lblPrompt.setText(Scoreboard1.PromptForPlay());
+					if(Scoreboard1.Jumbotron.length()> 0){
+						
+						lblResult.setText(Result + "\n" + Scoreboard1.ReportDriveResult());
+					}}
 				String play = "";
-				play.equals(comboBox.getSelectedItem());
+				play = (String) (comboBox.getSelectedItem());
 				PLAY = Scoreboard1.nextPlay(play);
 				Scoreboard1.setPower();
 				yds = donkeyteeth.nextPlay(PLAY, Scoreboard1.yardline);
@@ -128,7 +163,7 @@ public class GUI_1_50 extends JFrame {
 				lblClock.setText(Scoreboard1.ReportClock());
 				lblDownDist.setText(Scoreboard1.ReportDownAndDistance());
 				lblYardline.setText(Scoreboard1.ReportYardsToEndzone());
-				
+				lblPrompt.setText(Scoreboard1.PromptForPlay());
 				
 				if(Scoreboard1.Jumbotron.length()> 0){
 				
