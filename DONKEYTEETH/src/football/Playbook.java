@@ -95,7 +95,7 @@ public class Playbook {
 			
 
 		}
-		System.out.println("Super Sim Football!!!!");
+		
 
 	}
 

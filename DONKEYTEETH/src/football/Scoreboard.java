@@ -2,7 +2,13 @@ package football;
 
 import static java.lang.System.out;
 
+import java.awt.Image;
+import java.awt.image.ImageProducer;
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
+
+import javax.imageio.ImageIO;
 
 public class Scoreboard {
 	public int yardline = -1;
@@ -319,6 +325,7 @@ public class Scoreboard {
 				if (yardsgained > 0){
 					Megatron = ("Gain of " + (int) yardsgained + " yards on the run");
 					updateClock(50);
+					setUBERTRON("Graphics/dvdlogo.png");
 				}
 				else if (yardsgained == 0){
 					Megatron = ("No Gain on the Play");
@@ -448,7 +455,7 @@ public class Scoreboard {
 
 	
 
-public void FieldGraphic(){
+public String FieldGraphic(){
 	boolean GoingRight = false;
 	String msg = "";
 	if(!HomeHasBall){
@@ -469,21 +476,23 @@ public void FieldGraphic(){
 			GoingRight= true;
 		msg = ("                     " + HomeTeam.name + "==========>");
 		}
-		
+		msg = "\n" + msg;
 	}
-		
-	out.print("||");
+	
+	String yards = "";
+	
+	yards +=("||");
 	for(int i = 1; i <=99; i++ ){
 		if(GoingRight){
 			if(i == 100-yardline){
-					out.print(">");
+					yards +=(">");
 				}
 			if(i== 100-yardline+yardstofirst){
-					out.print("|");	
+					yards +=("|");	
 			
 					}
 				else{
-						out.print("-");
+						yards+=("-");
 		
 					}
 		}else{
@@ -492,25 +501,47 @@ public void FieldGraphic(){
 				
 				
 				
-				out.print("<");
+				yards+=("<");
 				}
 				if(i== yardline-yardstofirst){
-				out.print("|");	
+					yards+=("|");	
 					
 				}
 				else{
-				out.print("-");
+					yards+=("-");
 		}
 		}
 		
 	}
-	out.println("||");
+	yards+=("||");
 	
-	out.println("  G        10        20        30        40        50        40        30        20        10         G");
-	out.println(msg);
-		
+	String markers = ("\n  G        10        20        30        40        50        40        30        20        10         G");
+	
+	
+	
+	return yards + markers + msg;
 	
 }
 
+public Image UBERTRON;
+
+public void setUBERTRON(String file){
+
+	
+	 Image img = null;
+    try{
+  	  img = ImageIO.read(new File(file));
+    } catch (IOException e) {
+  	  e.printStackTrace();
+    }
+    
+    UBERTRON = img;
+	
+}
+
+public ImageProducer producer(){
+	
+	return (ImageProducer) UBERTRON;
+}
 
 }
