@@ -23,6 +23,7 @@ import javax.swing.JTextArea;
 import java.awt.Canvas;
 import java.awt.Component;
 import java.awt.Panel;
+import java.awt.Font;
 
 public class GUI_1_50  extends JFrame  {
 
@@ -69,7 +70,7 @@ public class GUI_1_50  extends JFrame  {
 		Scoreboard1.StartGame();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 500);
+		setBounds(100, 100, 2000, 1000);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -87,7 +88,7 @@ public class GUI_1_50  extends JFrame  {
 		
 		JTextArea Field = new JTextArea(Scoreboard1.FieldGraphic());
 		Field.setEditable(false);
-		Field.setBounds(34, 270, 900, 50);
+		Field.setBounds(347, 892, 900, 50);
 		contentPane.add(Field);
 		
 		
@@ -108,11 +109,12 @@ public class GUI_1_50  extends JFrame  {
 		contentPane.add(lblDownDist);
 		
 		JLabel lblYardline  = new JLabel(Scoreboard1.ReportYardsToEndzone());
-		lblYardline.setBounds(49, 390, 445, 16);
+		lblYardline.setFont(new Font("Tamil MN", Font.BOLD, 22));
+		lblYardline.setBounds(33, 910, 504, 50);
 		contentPane.add(lblYardline);
 		
 		JLabel lblPrompt  = new JLabel(Scoreboard1.PromptForPlay());
-		lblPrompt.setBounds(49, 350, 445, 16);
+		lblPrompt.setBounds(33, 892, 445, 16);
 		contentPane.add(lblPrompt);
 		
 		Panel panel = new Panel();
@@ -126,7 +128,7 @@ public class GUI_1_50  extends JFrame  {
 		
 		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.setMaximumRowCount(20);
-		comboBox.setBounds(33, 164, 270, 27);
+		comboBox.setBounds(282, 32, 270, 27);
 		comboBox.addItem("run");
 		comboBox.addItem("counter");
 		comboBox.addItem("pass");
@@ -162,7 +164,7 @@ public class GUI_1_50  extends JFrame  {
 				lblYardline.setText(Scoreboard1.ReportYardsToEndzone());
 				lblPrompt.setText(Scoreboard1.PromptForPlay());
 				Field.setText(Scoreboard1.FieldGraphic());
-				draw.drawImage(Scoreboard1.UBERTRON,587, 25, 200, 200, panel );
+				//draw.drawImage(Scoreboard1.UBERTRON,587, 25, 200, 200, panel );
 				contentPane.add(panel);
 				
 				
@@ -170,6 +172,11 @@ public class GUI_1_50  extends JFrame  {
 			
 			public void actionPerformed(ActionEvent e) {
 				
+				if(!Scoreboard1.GameIsAlive()){
+			
+				lblResult.setText("GAME OVER \n" + Scoreboard1.ReportScore());
+				
+				}else{
 				String play = "";
 				play = (String) (comboBox.getSelectedItem());
 				PLAY = Scoreboard1.nextPlay(play);
@@ -179,12 +186,15 @@ public class GUI_1_50  extends JFrame  {
 				lblResult.setText(Result);
 				Scoreboard1.CheckForQuarterChange();
 				updateStuff();
+			
+				
 				
 				if(Scoreboard1.Jumbotron.length()> 0){
 				
 					lblResult.setText(Result + "\n" + Scoreboard1.ReportDriveResult());
 			
 				
+				}
 			}
 				}
 		
@@ -193,8 +203,12 @@ public class GUI_1_50  extends JFrame  {
 		});
 		
 		
-		btnNewButton.setBounds(304, 164, 117, 29);
+		btnNewButton.setBounds(361, 59, 117, 29);
 		contentPane.add(btnNewButton);
+		
+		//JPanel panel_1 = new JPanel(Field.paint(Field.smileyFace));
+		//panel_1.setBounds(33, 144, 1200, 700);
+		//contentPane.add(panel_1);
 		
 		
 		

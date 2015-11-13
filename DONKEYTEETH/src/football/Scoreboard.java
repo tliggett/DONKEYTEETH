@@ -34,8 +34,8 @@ public class Scoreboard {
 		HomeTeam = new Team();
 		HomeTeam.name = "Minnesota Vikings";
 		HomeTeam.isCPU = false;
-		HomeTeam.overall = 20;
-		HomeTeam.momentum = 20;
+		HomeTeam.overall = 0;
+		HomeTeam.momentum = 0;
 		AwayTeam = new Team();
 		AwayTeam.name = "Green Bay Packers";
 		AwayTeam.isCPU = false;
@@ -380,8 +380,9 @@ public class Scoreboard {
 
 	public Boolean GameIsAlive() {
 
-		if (quarter > 4 && HomeScore != AwayScore)
+		if (quarter > 4 && HomeScore != AwayScore){
 			return false;
+		}
 		return true;
 
 	}

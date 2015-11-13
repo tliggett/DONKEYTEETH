@@ -25,7 +25,7 @@ public class Field extends Canvas
       smileyFace(window);
    }
 
-   public void smileyFace( Graphics window )
+   public static void smileyFace( Graphics window )
    {
       window.setColor(Color.GREEN);
       window.fillRect(100, 200, 1200, 700);
