@@ -66,8 +66,9 @@ public class GUI_1_50  extends JFrame  {
 		Graphics draw = null;
 		
 		
-		Playbook1.readfile();
+		Playbook1.loadPlaybook();
 		Scoreboard1.StartGame();
+		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 2000, 1000);

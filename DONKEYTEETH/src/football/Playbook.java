@@ -5,13 +5,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Playbook {
-	public static Play[] playlist = new Play[17];
-	public static int isRun = 0;
 	
+	public static int isRun = 0;
+	public static Play[] playlist = new Play[17];
 	
 	public static boolean IsValidPlay(String PLAY) {
 		Playbook Playbook1 = new Playbook();
@@ -49,54 +50,39 @@ public class Playbook {
 		
 		
 	}
-	public void readfile() throws FileNotFoundException, NumberFormatException {
-		Scanner scan = new Scanner(new File ("data/playslist.txt"));
-		// The name of the file to open.
-		String fileName = "data/playslist.txt";
-		int i = 0;
-		// This will reference one line at a time
-		String line = null;
-
-		try {
-			// FileReader reads text files in the default encoding.
-			FileReader fileReader = new FileReader(fileName);
-
-			// Always wrap FileReader in BufferedReader.
-			BufferedReader bufferedReader = new BufferedReader(fileReader);
-
-			while ((line = bufferedReader.readLine()) != null) {
-				
-				String[] ls = line.split(",");
-				
-				
-				playlist[i] = new Play();
-				playlist[i].name = ls[0];
-				String run = ls[1];
-				playlist[i].isRun = Integer.parseInt(run);
-				
-				
-				for (int s = 0; s <= 99; s++) {
-					 String [] list = new String [100];
-					 String parsable = "0";
-					 list[s] = ls[s + 2];
-					 parsable = list[s];
-					 playlist[i].odds[s] = Integer.parseInt(parsable);
-				}
-				Arrays.sort(playlist[i].odds);
-				i++;
-			}
-
-			// Always close files.
-			bufferedReader.close();
-		} catch (FileNotFoundException ex) {
-			System.out.println("Unable to open file '" + fileName + "'");
-		} catch (IOException ex) {
-			System.out.println("Error reading file '" + fileName + "'");
+	
+	public void loadPlaybook() throws NumberFormatException, NullPointerException, FileNotFoundException{
+		ArrayList<String[]> mat = new ArrayList<String[]>();
+		mat = ReadFile.readfile("data/playslist.txt");
+		for(int o = 0; o > )
+		
+		for(int i= 0; i< playlist.length - 1; i++){
+			String [] ray = new String[102];
+			ray = mat.get(i);
+			playlist[i] = new Play();
 			
-
+			playlist[i].name = ray[0];
+			
+			
+			int l = 0;
+			l = Integer.parseInt(ray[1]);
+			playlist[i].isRun = l;
+			
+			for (int s = 0; s <= 99; s++) {
+				 
+				String [] list = new String [100];
+				 String parsable = "0";
+				 list[s] = ray[s+2];
+				 parsable = list[s];
+				 playlist[i].odds[s] = Integer.parseInt(parsable);
+				
+			}
+			Arrays.sort(playlist[i].odds);
+			
+			
 		}
 		
-
 	}
+	
 
 }
