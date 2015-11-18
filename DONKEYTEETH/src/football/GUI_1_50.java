@@ -34,7 +34,7 @@ public class GUI_1_50  extends JFrame  {
 	char r, p;
 	String play;
 	String Result = "";
-	
+	public static boolean gameIsActive = false;
 	
 	Playbook Playbook1 = new Playbook();
 	footballSimMethods donkeyteeth = new footballSimMethods();
@@ -48,8 +48,11 @@ public class GUI_1_50  extends JFrame  {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					
+				
 					GUI_1_50 frame = new GUI_1_50();
 					frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -62,8 +65,22 @@ public class GUI_1_50  extends JFrame  {
 	 * @throws FileNotFoundException 
 	 * @throws NumberFormatException 
 	 */
+	
+	
+	
+		
+		
+		
+		
+	
+	
+	
 	public GUI_1_50() throws NumberFormatException, FileNotFoundException, NullPointerException {
+		
 		Graphics draw = null;
+		
+		
+		int action = 0;
 		
 		
 		Playbook1.loadPlaybook();
@@ -77,6 +94,19 @@ public class GUI_1_50  extends JFrame  {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JTextArea Field = new JTextArea(Scoreboard1.FieldGraphic());
+		JLabel lblNewLabel_1 = new JLabel(Scoreboard1.ReportScore());
+		JLabel lblQuarter = new JLabel(Scoreboard1.ReportQuarter());
+		JLabel lblClock = new JLabel(Scoreboard1.ReportClock());
+		JLabel lblDownDist = new JLabel(Scoreboard1.ReportDownAndDistance());
+		JLabel lblYardline  = new JLabel(Scoreboard1.ReportYardsToEndzone());
+		JLabel lblPrompt  = new JLabel(Scoreboard1.PromptForPlay());
+		Panel panel = new Panel();
+		JLabel lblResult  = new JLabel(Result);
+		JComboBox<String> comboBox = new JComboBox<String>();
+		
+		
+		
 		JLabel lblSuperSimFootball = new JLabel("Super Sim Football!!!");
 		lblSuperSimFootball.setBounds(33, 36, 183, 16);
 		contentPane.add(lblSuperSimFootball);
@@ -87,74 +117,7 @@ public class GUI_1_50  extends JFrame  {
 		
 		
 		
-		JTextArea Field = new JTextArea(Scoreboard1.FieldGraphic());
-		Field.setEditable(false);
-		Field.setBounds(347, 892, 900, 50);
-		contentPane.add(Field);
-		
-		
-		JLabel lblNewLabel_1 = new JLabel(Scoreboard1.ReportScore());
-		lblNewLabel_1.setBounds(33, 64, 445, 16);
-		contentPane.add(lblNewLabel_1);
-		
-		JLabel lblQuarter = new JLabel(Scoreboard1.ReportQuarter());
-		lblQuarter.setBounds(32, 92, 445, 16);
-		contentPane.add(lblQuarter);
-		
-		JLabel lblClock = new JLabel(Scoreboard1.ReportClock());
-		lblClock.setBounds(33, 108, 445, 16);
-		contentPane.add(lblClock);
-		
-		JLabel lblDownDist = new JLabel(Scoreboard1.ReportDownAndDistance());
-		lblDownDist.setBounds(33, 144, 122, 16);
-		contentPane.add(lblDownDist);
-		
-		JLabel lblYardline  = new JLabel(Scoreboard1.ReportYardsToEndzone());
-		lblYardline.setFont(new Font("Tamil MN", Font.BOLD, 22));
-		lblYardline.setBounds(33, 910, 504, 50);
-		contentPane.add(lblYardline);
-		
-		JLabel lblPrompt  = new JLabel(Scoreboard1.PromptForPlay());
-		lblPrompt.setBounds(33, 892, 445, 16);
-		contentPane.add(lblPrompt);
-		
-		Panel panel = new Panel();
-		panel.setBounds(587, 25, 200, 200);
-		contentPane.add(panel);
-		
-		
-		JLabel lblResult  = new JLabel(Result);
-		lblResult.setBounds(49, 456, 445, 16);
-		contentPane.add(lblResult);
-		
-		JComboBox<String> comboBox = new JComboBox<String>();
-		comboBox.setMaximumRowCount(20);
-		comboBox.setBounds(282, 32, 270, 27);
-		comboBox.addItem("run");
-		comboBox.addItem("counter");
-		comboBox.addItem("pass");
-		comboBox.addItem("dive");
-		comboBox.addItem("pitch");
-		comboBox.addItem("powero");
-		comboBox.addItem("reverse");
-		comboBox.addItem("sweep");
-		comboBox.addItem("sneak");
-		comboBox.addItem("screen");
-		comboBox.addItem("slants");
-		comboBox.addItem("verticals");
-		comboBox.addItem("curls");
-		comboBox.addItem("hailmary");
-		comboBox.addItem("flag");
-		comboBox.addItem("playaction");
-		comboBox.addItem("punt");
-		comboBox.addItem("fg");
-		
-		
-		
-		contentPane.add(comboBox);
-		//contentPane.add(Field());
-		
-		JButton btnNewButton = new JButton("GO!!!!");
+		JButton btnNewButton = new JButton("START");
 		btnNewButton.addActionListener(new ActionListener() {
 			@SuppressWarnings("null")
 			public void updateStuff() throws NullPointerException{
@@ -167,80 +130,161 @@ public class GUI_1_50  extends JFrame  {
 				Field.setText(Scoreboard1.FieldGraphic());
 				//draw.drawImage(Scoreboard1.UBERTRON,587, 25, 200, 200, panel );
 				contentPane.add(panel);
-				
-				
-			}
 			
-			public void actionPerformed(ActionEvent e) {
+				public void actionPerformed(ActionEvent e) {
 				
-				if(!Scoreboard1.GameIsAlive()){
-			
-				lblResult.setText("GAME OVER \n" + Scoreboard1.ReportScore());
+				
+				if(action ==0){
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				Field.setEditable(false);
+				Field.setBounds(347, 892, 900, 50);
+				contentPane.add(Field);
+				
+				
+				
+				lblNewLabel_1.setBounds(33, 64, 445, 16);
+				contentPane.add(lblNewLabel_1);
+				
+				
+				lblQuarter.setBounds(32, 92, 445, 16);
+				contentPane.add(lblQuarter);
+				
+				
+				lblClock.setBounds(33, 108, 445, 16);
+				contentPane.add(lblClock);
+				
+				
+				lblDownDist.setBounds(33, 144, 122, 16);
+				contentPane.add(lblDownDist);
+				
+				
+				lblYardline.setFont(new Font("Tamil MN", Font.BOLD, 22));
+				lblYardline.setBounds(33, 910, 504, 50);
+				contentPane.add(lblYardline);
+				
+				
+				lblPrompt.setBounds(33, 892, 445, 16);
+				contentPane.add(lblPrompt);
+				
+				
+				panel.setBounds(587, 25, 200, 200);
+				contentPane.add(panel);
+				
+				
+				
+				lblResult.setBounds(49, 456, 445, 16);
+				contentPane.add(lblResult);
+				
+				comboBox.setMaximumRowCount(20);
+				comboBox.setBounds(282, 32, 270, 27);
+				comboBox.addItem("run");
+				comboBox.addItem("counter");
+				comboBox.addItem("pass");
+				comboBox.addItem("dive");
+				comboBox.addItem("pitch");
+				comboBox.addItem("powero");
+				comboBox.addItem("reverse");
+				comboBox.addItem("sweep");
+				comboBox.addItem("sneak");
+				comboBox.addItem("screen");
+				comboBox.addItem("slants");
+				comboBox.addItem("verticals");
+				comboBox.addItem("curls");
+				comboBox.addItem("hailmary");
+				comboBox.addItem("flag");
+				comboBox.addItem("playaction");
+				comboBox.addItem("punt");
+				comboBox.addItem("fg");
+				contentPane.add(comboBox);
+				//contentPane.add(Field());
+				btnNewButton.setText("GO!!!!!");
+				action = 1;
 				
 				}else{
-				String play = "";
-				play = (String) (comboBox.getSelectedItem());
-				PLAY = Scoreboard1.nextPlay(play);
-				Scoreboard1.setPower();
-				yds = donkeyteeth.nextPlay(PLAY, Scoreboard1.yardline);
-				String Result = Scoreboard1.UpdateScoreboardAfterPlay(yds,PLAY);
-				lblResult.setText(Result);
-				Scoreboard1.CheckForQuarterChange();
-				updateStuff();
 			
+					
+						
+						
+					
+					
+					
+						
+					if(!Scoreboard1.GameIsAlive()){
+					
+					lblResult.setText("GAME OVER \n" + Scoreboard1.ReportScore());
+						
+					}else{
+					String play = "";
+						play = (String) (comboBox.getSelectedItem());
+						PLAY = Scoreboard1.nextPlay(play);
+						Scoreboard1.setPower();
+						yds = donkeyteeth.nextPlay(PLAY, Scoreboard1.yardline);
+						String Result = Scoreboard1.UpdateScoreboardAfterPlay(yds,PLAY);
+						lblResult.setText(Result);
+						Scoreboard1.CheckForQuarterChange();
+						updateStuff();
+					
+						
+						
+						if(Scoreboard1.Jumbotron.length()> 0){
+						
+							lblResult.setText(Result + "\n" + Scoreboard1.ReportDriveResult());
+					
+						
+						}
 				
+					
+					
+					}});
 				
-				if(Scoreboard1.Jumbotron.length()> 0){
-				
-					lblResult.setText(Result + "\n" + Scoreboard1.ReportDriveResult());
-			
-				
-				}
 			}
-				}
-		
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 			
+			
+		
+			}
 			
 		});
 		
 		
+		
 		btnNewButton.setBounds(361, 59, 117, 29);
-		contentPane.add(btnNewButton);
-		
-		//JPanel panel_1 = new JPanel(Field.paint(Field.smileyFace));
-		//panel_1.setBounds(33, 144, 1200, 700);
-		//contentPane.add(panel_1);
+		contentPane.add(btnNewButton);	
 		
 		
+
 		
-		
-		
-		
-		
-		
-		/*while(Scoreboard1.TeamWithBall().isCPU){
 			
-			Timer timer = new Timer();
-			timer.start();
-			PLAY = Scoreboard1.nextPlay(play);
-			Scoreboard1.setPower();
-			yds = donkeyteeth.nextPlay(PLAY, Scoreboard1.yardline);
-			String Result = Scoreboard1.UpdateScoreboardAfterPlay(yds,PLAY);
-			lblResult.setText(Result);
-			Scoreboard1.CheckForQuarterChange();
-			lblNewLabel_1.setText(Scoreboard1.ReportScore());
-			lblQuarter.setText(Scoreboard1.ReportQuarter());
-			lblClock.setText(Scoreboard1.ReportClock());
-			lblDownDist.setText(Scoreboard1.ReportDownAndDistance());
-			lblYardline.setText(Scoreboard1.ReportYardsToEndzone());
-			lblPrompt.setText(Scoreboard1.PromptForPlay());
-			if(Scoreboard1.Jumbotron.length()> 0){
-				
-				lblResult.setText(Result + "\n" + Scoreboard1.ReportDriveResult());
-			}}*/
+	
 		
 		
 		
+		
+		}
+		
+			
 		
 	}
-}
+	
+	
+

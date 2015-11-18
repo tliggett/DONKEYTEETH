@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -58,5 +60,28 @@ public class ReadFile {
 		return ret;
 		
 
+	}
+	
+	public static void writeFile(String words, String filename) throws FileNotFoundException, UnsupportedEncodingException{
+		
+		
+		PrintWriter writer = new PrintWriter(filename);
+		writer.println(words);
+		writer.close();
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 }

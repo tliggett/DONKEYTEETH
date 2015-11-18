@@ -18,7 +18,6 @@ public class Playbook {
 		Playbook Playbook1 = new Playbook();
 		for (int i = playlist.length-1; i >= 0; i--) {
 			if (playlist[i].name.equals(PLAY)){
-				isRun = playlist[i].isRun;
 				return true;
 			}
 			
@@ -54,9 +53,9 @@ public class Playbook {
 	public void loadPlaybook() throws NumberFormatException, NullPointerException, FileNotFoundException{
 		ArrayList<String[]> mat = new ArrayList<String[]>();
 		mat = ReadFile.readfile("data/playslist.txt");
-		for(int o = 0; o > )
 		
-		for(int i= 0; i< playlist.length - 1; i++){
+		
+		for(int i= 0; i<= playlist.length - 1; i++){
 			String [] ray = new String[102];
 			ray = mat.get(i);
 			playlist[i] = new Play();

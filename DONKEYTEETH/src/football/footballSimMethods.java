@@ -10,7 +10,8 @@ import java.io.IOException;
 import java.math.*;
 
 public class footballSimMethods {
-	Playbook Playbook1 = new Playbook();Play [] plays = Playbook1.playlist;
+	Playbook Playbook1 = new Playbook();
+	Play [] plays = Playbook1.playlist;
 	
 	
 	
