@@ -520,7 +520,7 @@ public String FieldGraphic(){
 	}
 	yards+=("||");
 	
-	String markers = ("\n  G        10        20        30        40        50        40        30        20        10         G");
+	String markers = ("\n  G\t        10\t        20\t        30\t        40\t        50\t        40\t        30\t        20\t        10\t         G");
 	
 	
 	
