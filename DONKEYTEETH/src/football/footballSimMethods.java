@@ -33,11 +33,6 @@ public class footballSimMethods {
 	}
 	
 		
-	
-	
-	
-	
-	
 	public int RegularPlay(int i){
 		int yods = 0;
 		int rods = 0;
@@ -77,13 +72,13 @@ public class footballSimMethods {
 	        yods = 40;
 	    } else if (rods <=50) {
 	        yods = 50;
-	    } else if (rods <=70) {
+	    } else if (rods <=85) {
 	        yods = 60;
-	    } else if (rods <=80) {
+	    } else if (rods <=95) {
 	        yods = 70;
-	    } else if (rods <=90) {
+	    } else if (rods <=97) {
 	        yods = 80;
-	    } else if (rods <=98) {
+	    } else if (rods <=99) {
 	        yods = 90;
 	    } else  {
 	    	yods = 100;
