@@ -27,20 +27,24 @@ public class Scoreboard {
 	
 	
 	
-	public void StartGame() {
-
+	public void StartGame(String[] infotec) {
+		
+		
+		
+		
 		HomeScore = 0;
 		AwayScore = 0;
 		HomeTeam = new Team();
-		HomeTeam.name = "Minnesota Vikings";
+		HomeTeam.name = infotec[0];
 		HomeTeam.isCPU = false;
-		HomeTeam.overall = 0;
-		HomeTeam.momentum = 0;
+		HomeTeam.overall = Integer.parseInt(infotec[1]);
+		HomeTeam.momentum = Integer.parseInt(infotec[2]);
+		
 		AwayTeam = new Team();
-		AwayTeam.name = "Green Bay Packers";
+		AwayTeam.name = infotec[3];
 		AwayTeam.isCPU = false;
-		AwayTeam.overall = 0;
-		AwayTeam.momentum = 0;
+		AwayTeam.overall = Integer.parseInt(infotec[4]);
+		AwayTeam.momentum = Integer.parseInt(infotec[5]);
 		HomeHasBall = true;
 		Megatron = "";
 		Jumbotron = "";
