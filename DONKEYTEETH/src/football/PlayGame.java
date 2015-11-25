@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.Timer;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -28,8 +27,6 @@ import java.awt.Font;
 public class PlayGame  extends JFrame  {
 
 	private JPanel contentPane;
-	int yds, yds2go, intDist, intDist2, intDist3, intDist4, intDown, yardsGained, intDist2Touch;
-	double yardsgained;
 	String run, pass, PLAY, down;
 	char r, p;
 	String play;
@@ -151,8 +148,6 @@ public class PlayGame  extends JFrame  {
 		comboBox.addItem("punt");
 		comboBox.addItem("fg");
 		
-		
-		
 		contentPane.add(comboBox);
 		//contentPane.add(Field());
 		
@@ -208,38 +203,6 @@ public class PlayGame  extends JFrame  {
 		
 		btnNewButton.setBounds(361, 59, 117, 29);
 		contentPane.add(btnNewButton);
-		
-		//JPanel panel_1 = new JPanel(Field.paint(Field.smileyFace));
-		//panel_1.setBounds(33, 144, 1200, 700);
-		//contentPane.add(panel_1);
-		
-		
-		
-		
-		
-		
-		
-		
-		/*while(Scoreboard1.TeamWithBall().isCPU){
-			
-			Timer timer = new Timer();
-			timer.start();
-			PLAY = Scoreboard1.nextPlay(play);
-			Scoreboard1.setPower();
-			yds = donkeyteeth.nextPlay(PLAY, Scoreboard1.yardline);
-			String Result = Scoreboard1.UpdateScoreboardAfterPlay(yds,PLAY);
-			lblResult.setText(Result);
-			Scoreboard1.CheckForQuarterChange();
-			lblNewLabel_1.setText(Scoreboard1.ReportScore());
-			lblQuarter.setText(Scoreboard1.ReportQuarter());
-			lblClock.setText(Scoreboard1.ReportClock());
-			lblDownDist.setText(Scoreboard1.ReportDownAndDistance());
-			lblYardline.setText(Scoreboard1.ReportYardsToEndzone());
-			lblPrompt.setText(Scoreboard1.PromptForPlay());
-			if(Scoreboard1.Jumbotron.length()> 0){
-				
-				lblResult.setText(Result + "\n" + Scoreboard1.ReportDriveResult());
-			}}*/
 		
 		
 		
