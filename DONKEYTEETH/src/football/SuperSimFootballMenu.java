@@ -24,6 +24,7 @@ import java.awt.Canvas;
 import java.awt.Component;
 import java.awt.Panel;
 import java.awt.Font;
+import javax.swing.JCheckBox;
 
 public class SuperSimFootballMenu  extends JFrame  {
 
@@ -85,19 +86,45 @@ public class SuperSimFootballMenu  extends JFrame  {
 		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.setMaximumRowCount(20);
 		comboBox.setBounds(6, 192, 189, 27);
-		comboBox.addItem("New York Giants");
-		comboBox.addItem("Minnesota Vikings");
-		comboBox.addItem("Green Bay Packers");
-		comboBox.addItem("Chicago Bears");
-	
+		comboBox.addItem("Minnesota Vikings OVR:86");
+		comboBox.addItem("New York Giants OVR:82");
+		comboBox.addItem("Green Bay Packers OVR:87");
+		comboBox.addItem("Chicago Bears OVR:81");
+		comboBox.addItem("New England Patriots OVR:95");
+		comboBox.addItem("Carolina Panthers OVR:94");
+		
+		
+		
+		
 		contentPane.add(comboBox);
 		
 		JComboBox<String> comboBox1 = new JComboBox<String>();
 		comboBox1.setMaximumRowCount(20);
 		comboBox1.setBounds(266, 192, 228, 27);
-		comboBox1.addItem("New York Giants");
-		comboBox1.addItem("Minnesota Vikings");
+		comboBox1.addItem("Minnesota Vikings OVR:86");
+		comboBox1.addItem("New York Giants OVR:82");
+		comboBox1.addItem("Green Bay Packers OVR:87");
+		comboBox1.addItem("Chicago Bears OVR:81");
+		comboBox1.addItem("New England Patriots OVR:95");
+		comboBox1.addItem("Carolina Panthers OVR:94");
 		contentPane.add(comboBox1);
+		
+		
+		
+		
+		JLabel lblVs = new JLabel("VS");
+		lblVs.setBounds(217, 196, 22, 16);
+		contentPane.add(lblVs);
+		
+		JCheckBox chckbxCpuPlayer = new JCheckBox("CPU Player");
+		chckbxCpuPlayer.setBounds(44, 226, 97, 23);
+		contentPane.add(chckbxCpuPlayer);
+		
+		JCheckBox chckbxCpuPlayer_1 = new JCheckBox("CPU Player");
+		chckbxCpuPlayer_1.setBounds(328, 226, 97, 23);
+		contentPane.add(chckbxCpuPlayer_1);
+		
+		String [][] args = new String [2][4];
 		
 		
 		JButton btnNewButton = new JButton("Play Game");
@@ -105,11 +132,29 @@ public class SuperSimFootballMenu  extends JFrame  {
 			@SuppressWarnings("null")
 			
 			public void actionPerformed(ActionEvent e) {
-			try {
-				String [] args = {"0","0","0","0","0","0"};
-				args[0] = (String) (comboBox.getSelectedItem());
-				args[3] = (String) (comboBox1.getSelectedItem());
+			try {					
+				
+				for(int i = 0; i<2; i++){
+					for(int j = 0; j<4; j++){
+						args[i][j] = "0";
+					}
+				}
+				
+				String gonnasplit = (String) (comboBox.getSelectedItem());
+				String [] line = gonnasplit.split("OVR:");
+				args[0][0] = line[0];
+				args[0][1] = Boolean.toString(chckbxCpuPlayer.isSelected());
+				args[0][2] = line[1];
+				
+				String gonnasplit1 = (String) (comboBox1.getSelectedItem());
+				String [] line1 = gonnasplit1.split("OVR:");
+				args[1][0] = line1[0];
+				args[1][1] = Boolean.toString(chckbxCpuPlayer_1.isSelected());
+				args[1][2] = line1[1];
+				
 				PlayGame.main(args);
+				
+				
 			} catch (NumberFormatException | NullPointerException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -124,13 +169,6 @@ public class SuperSimFootballMenu  extends JFrame  {
 		
 		btnNewButton.setBounds(177, 292, 117, 29);
 		contentPane.add(btnNewButton);
-		
-		JLabel lblVs = new JLabel("VS");
-		lblVs.setBounds(217, 196, 22, 16);
-		contentPane.add(lblVs);
-		
-		
-		
 		
 		
 		

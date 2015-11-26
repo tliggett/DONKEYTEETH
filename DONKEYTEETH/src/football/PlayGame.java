@@ -31,24 +31,31 @@ public class PlayGame  extends JFrame  {
 	char r, p;
 	String play;
 	String Result = "";
-	public static String[] info;
-	
+	public static String[][] info;
+	int yds;
 	Playbook Playbook1 = new Playbook();
 	footballSimMethods donkeyteeth = new footballSimMethods();
 	Scoreboard Scoreboard1 = new Scoreboard();
 	private JTextField txtChooseYourPlay;
 	private JTextField textField;
+	public static boolean isOn = true;
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) throws NullPointerException {
+	public static void main(String[][] args) throws NullPointerException {
 		info = args;
+		
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					PlayGame frame = new PlayGame();
+					
 					frame.setVisible(true);
-				} catch (Exception e) {
+					
+					
+					}
+				 catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
@@ -60,6 +67,7 @@ public class PlayGame  extends JFrame  {
 	 * @throws FileNotFoundException 
 	 * @throws NumberFormatException 
 	 */
+	@SuppressWarnings("deprecation")
 	public PlayGame() throws NumberFormatException, FileNotFoundException, NullPointerException {
 		Graphics draw = null;
 		
@@ -70,7 +78,7 @@ public class PlayGame  extends JFrame  {
 		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 2000, 1000);
+		setBounds(100, 100, 750, 750);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -88,12 +96,12 @@ public class PlayGame  extends JFrame  {
 		
 		JTextArea Field = new JTextArea(Scoreboard1.FieldGraphic());
 		Field.setEditable(false);
-		Field.setBounds(347, 892, 900, 50);
+		Field.setBounds(21, 207, 560, 90);
 		contentPane.add(Field);
 		
 		
 		JLabel lblNewLabel_1 = new JLabel(Scoreboard1.ReportScore());
-		lblNewLabel_1.setBounds(33, 64, 445, 16);
+		lblNewLabel_1.setBounds(21, 65, 445, 16);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblQuarter = new JLabel(Scoreboard1.ReportQuarter());
@@ -110,11 +118,11 @@ public class PlayGame  extends JFrame  {
 		
 		JLabel lblYardline  = new JLabel(Scoreboard1.ReportYardsToEndzone());
 		lblYardline.setFont(new Font("Tamil MN", Font.BOLD, 22));
-		lblYardline.setBounds(33, 910, 504, 50);
+		lblYardline.setBounds(27, 351, 504, 50);
 		contentPane.add(lblYardline);
 		
 		JLabel lblPrompt  = new JLabel(Scoreboard1.PromptForPlay());
-		lblPrompt.setBounds(33, 892, 445, 16);
+		lblPrompt.setBounds(32, 289, 445, 51);
 		contentPane.add(lblPrompt);
 		
 		Panel panel = new Panel();
@@ -127,8 +135,9 @@ public class PlayGame  extends JFrame  {
 		contentPane.add(lblResult);
 		
 		JComboBox<String> comboBox = new JComboBox<String>();
+		
 		comboBox.setMaximumRowCount(20);
-		comboBox.setBounds(282, 32, 270, 27);
+		comboBox.setBounds(226, 31, 270, 27);
 		comboBox.addItem("run");
 		comboBox.addItem("counter");
 		comboBox.addItem("pass");
@@ -170,11 +179,7 @@ public class PlayGame  extends JFrame  {
 			
 			public void actionPerformed(ActionEvent e) {
 				
-				if(!Scoreboard1.GameIsAlive()){
-			
-				lblResult.setText("GAME OVER \n" + Scoreboard1.ReportScore());
 				
-				}else{
 				String play = "";
 				play = (String) (comboBox.getSelectedItem());
 				PLAY = Scoreboard1.nextPlay(play);
@@ -184,7 +189,12 @@ public class PlayGame  extends JFrame  {
 				lblResult.setText(Result);
 				Scoreboard1.CheckForQuarterChange();
 				updateStuff();
-			
+				
+				if((Scoreboard1.HomeHasBall && Scoreboard1.HomeTeam.isCPU) || (!Scoreboard1.HomeHasBall && Scoreboard1.AwayTeam.isCPU) ){
+					comboBox.setEnabled(false);
+				}else{
+					comboBox.setEnabled(true);
+				}
 				
 				
 				if(Scoreboard1.Jumbotron.length()> 0){
@@ -193,8 +203,31 @@ public class PlayGame  extends JFrame  {
 			
 				
 				}
+				if(!Scoreboard1.GameIsAlive()){
+					
+					lblQuarter.setText("GAME");
+					lblClock.setText("OVER");
+					comboBox.setEnabled(false);
+					btnNewButton.setEnabled(false);
+					lblResult.setText("GAME OVER!!! " + Scoreboard1.ReportScore());
+					
+					
+					/*String[] args = {"0", "0", "0", "0"};
+					args[0] = ("Game Over. " + Scoreboard1.ReportScore() );
+					try {
+						GameResult end = new GameResult(args);
+						end.setVisible(true);
+						
+					} catch (NumberFormatException | FileNotFoundException | NullPointerException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}*/
+					
+					
+					
+					}
 			}
-				}
+				
 		
 			
 			
@@ -205,7 +238,11 @@ public class PlayGame  extends JFrame  {
 		contentPane.add(btnNewButton);
 		
 		
+	
+	
 		
 		
 	}
-}
+		
+	}
+

@@ -27,36 +27,32 @@ public class Scoreboard {
 	
 	
 	
-	public void StartGame(String[] infotec) {
+	public void StartGame(String[][] infotec) {
 		
 		
 		
 		
 		HomeScore = 0;
 		AwayScore = 0;
+		
 		HomeTeam = new Team();
-		HomeTeam.name = infotec[0];
-		HomeTeam.isCPU = false;
-		HomeTeam.overall = Integer.parseInt(infotec[1]);
-		HomeTeam.momentum = Integer.parseInt(infotec[2]);
+		HomeTeam.name = infotec[0][0];
+		HomeTeam.isCPU = Boolean.valueOf(infotec[0][1]);
+		HomeTeam.overall = Integer.parseInt(infotec[0][2]);
+		HomeTeam.momentum = Integer.parseInt(infotec[0][3]);
 		
 		AwayTeam = new Team();
-		AwayTeam.name = infotec[3];
-		AwayTeam.isCPU = false;
-		AwayTeam.overall = Integer.parseInt(infotec[4]);
-		AwayTeam.momentum = Integer.parseInt(infotec[5]);
+		AwayTeam.name = infotec[1][0];
+		AwayTeam.isCPU =  Boolean.valueOf(infotec[1][1]);
+		AwayTeam.overall = Integer.parseInt(infotec[1][2]);
+		AwayTeam.momentum = Integer.parseInt(infotec[1][3]);
+		
 		HomeHasBall = true;
 		Megatron = "";
 		Jumbotron = "";
-		//out.println("How long are the quarters?");
-		//quarterlength = gage.nextInt();
 		clock = 100*quarterlength;
 		quarter = 1;
 		setQuarterLength(quarterlength);
-		//out.println("How many players?");
-		int players = 2;
-		//int players = gage.nextInt();
-		//SetTeams(players);
 		StartDrive();
 
 	}
@@ -204,8 +200,12 @@ public class Scoreboard {
 	}
 
 	public String PromptForPlay() {
-		if (HomeHasBall)
+		if (HomeHasBall && HomeTeam.isCPU)
+			return (HomeTeam.name + " have the ball. Press GO to Continue.");
+		if (HomeHasBall && !HomeTeam.isCPU)
 			return (HomeTeam.name + " choose your play");
+		if (!HomeHasBall && AwayTeam.isCPU)
+			return (AwayTeam.name + " have the ball. Press GO to Continue.");
 		else
 			return (AwayTeam.name + " choose your play");
 	}
@@ -466,24 +466,24 @@ public String FieldGraphic(){
 	if(!HomeHasBall){
 		if(quarter%2 == 0){
 			GoingRight = true;
-			msg = ("                     " + AwayTeam.name + "==========>");
+			msg = ("" + AwayTeam.name + "==========>");
 			
 		}else{
 			GoingRight= false;
-		msg = ("                     <==========" + AwayTeam.name);
+		msg = ("<==========" + AwayTeam.name);
 		}
 	}else{
 		if(quarter%2 == 0){
 			GoingRight = false;
-			msg = ("                     <==========" + HomeTeam.name);	
+			msg = ("<==========" + HomeTeam.name);	
 			
 		}else{
 			GoingRight= true;
-		msg = ("                     " + HomeTeam.name + "==========>");
+		msg = ("" + HomeTeam.name + "==========>");
 		}
-		msg = "\n" + msg;
+		
 	}
-	
+	msg = "\n" + msg;
 	String yards = "";
 	
 	yards +=("||");
@@ -520,7 +520,7 @@ public String FieldGraphic(){
 	}
 	yards+=("||");
 	
-	String markers = ("\n  G\t        10\t        20\t        30\t        40\t        50\t        40\t        30\t        20\t        10\t         G");
+	String markers = ("\n  G        10        20        30        40        50        40        30        20        10         G");
 	
 	
 	
