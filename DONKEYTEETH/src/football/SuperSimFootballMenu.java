@@ -88,6 +88,8 @@ public class SuperSimFootballMenu  extends JFrame  {
 		comboBox.setBounds(6, 192, 189, 27);
 		comboBox.addItem("Minnesota Vikings OVR:86");
 		comboBox.addItem("New York Giants OVR:82");
+		comboBox.addItem("Philadelphia Eagles OVR:81");
+		comboBox.addItem("Detroit Lions OVR:80");
 		comboBox.addItem("Green Bay Packers OVR:87");
 		comboBox.addItem("Chicago Bears OVR:81");
 		comboBox.addItem("New England Patriots OVR:95");
@@ -101,9 +103,11 @@ public class SuperSimFootballMenu  extends JFrame  {
 		JComboBox<String> comboBox1 = new JComboBox<String>();
 		comboBox1.setMaximumRowCount(20);
 		comboBox1.setBounds(266, 192, 228, 27);
+		comboBox1.addItem("Green Bay Packers OVR:87");
 		comboBox1.addItem("Minnesota Vikings OVR:86");
 		comboBox1.addItem("New York Giants OVR:82");
-		comboBox1.addItem("Green Bay Packers OVR:87");
+		comboBox1.addItem("Philadelphia Eagles OVR:81");
+		comboBox1.addItem("Detroit Lions OVR:80");
 		comboBox1.addItem("Chicago Bears OVR:81");
 		comboBox1.addItem("New England Patriots OVR:95");
 		comboBox1.addItem("Carolina Panthers OVR:94");

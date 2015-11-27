@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -62,11 +63,13 @@ public class ReadFile {
 
 	}
 	
-	public static void writeFile(String words, String filename) throws FileNotFoundException, UnsupportedEncodingException{
+	public static void writeFile(String words, String filename) throws IOException{
 		
-		
+		FileWriter fr = new FileWriter(filename);
 		PrintWriter writer = new PrintWriter(filename);
+		
 		writer.println(words);
+		writer.flush();
 		writer.close();
 
 		

@@ -81,7 +81,47 @@ public class Scoreboard {
 	}
 	
 	
-	public void updateMomentum(int sway){
+	public void updateStats(int stat, int increase){
+		 if(HomeHasBall){
+		HomeTeam.stats[stat] += increase;
+		}else{
+		AwayTeam.stats[stat] += increase;	
+		 }
+		
+		//0 Score
+		//1 Rush Yards
+		//2 Pass Yards
+		//3 TOP
+		//4 Turnovers
+		
+	}
+
+	
+	public int [][] Statbook(){
+		int[][] ret = new int[2][5];
+		ret[0][0] = HomeScore;
+		ret[1][0] = AwayScore;
+		for(int i = 1; i<5; i++){
+			ret[0][i] = HomeTeam.stats[i]; 
+		}
+		for(int i = 1; i<5; i++){
+			ret[1][i] = AwayTeam.stats[i]; 
+		}
+		
+		
+		return ret;
+	}
+	
+public String[] TeamNames(){
+		String[]ret = new String[2];
+		
+		ret[0] = HomeTeam.name;
+		ret[1] = AwayTeam.name;
+		
+		return ret;
+	}
+	
+public void updateMomentum(int sway){
 		if(HomeHasBall){
 			HomeTeam.momentum += sway;
 			
@@ -93,8 +133,10 @@ public class Scoreboard {
 		
 		
 	}
-	public void updateClock(double time){
+	
+public void updateClock(double time){
 		clock = clock - time;
+		updateStats(3, (int) time);
 		if(clock <= 0){
 			quarter ++;
 			clock =quarterlength;
@@ -221,6 +263,7 @@ public class Scoreboard {
 			yardline -= yardsbeforeturnover;
 			yardline1 = 100 - yardline;
 			updateMomentum(-1);
+			updateStats(4, 1);
 			HomeHasBall = !HomeHasBall;
 			if (yardline1 < 0) {
 				Jumbotron = ("He's gonna take it in for six! Touchdown!");
@@ -246,6 +289,7 @@ public class Scoreboard {
 			yardline -= yardsbeforeturnover;
 			yardline1 = 100 - yardline;
 			updateMomentum(-1);
+			updateStats(4, 1);
 			HomeHasBall = !HomeHasBall;
 			if (yardline1 < 0) {
 				Jumbotron = ("PICK SIX!!!!!");
@@ -326,6 +370,7 @@ public class Scoreboard {
 			Jumbotron = "";
 			Megatron = "";
 			if (Playbook.IsRun(PLAY)) {
+				updateStats(1, yardsgained);
 				if (yardsgained > 0){
 					Megatron = ("Gain of " + (int) yardsgained + " yards on the run");
 					updateClock(50);
@@ -340,6 +385,7 @@ public class Scoreboard {
 					updateClock(50);
 				}
 			} else {
+				updateStats(2, yardsgained);
 				if (yardsgained > 0){
 					Megatron = ("Pass Complete for " + (int) yardsgained + " yards");
 					updateClock(35);

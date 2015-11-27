@@ -8,7 +8,8 @@ public class Team {
 	public int overall = 5; 
 	public int power = 0;
 	public int momentum = 0;
-	public String name = "";   
+	public String name = "";  
+	public int[] stats = new int[] {0,0,0,0,0};
 	public boolean isCPU = false;
 	double rods;
 	Scanner gage = new Scanner(System.in);

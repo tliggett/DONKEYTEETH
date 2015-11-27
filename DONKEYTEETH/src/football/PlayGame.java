@@ -23,6 +23,9 @@ import java.awt.Canvas;
 import java.awt.Component;
 import java.awt.Panel;
 import java.awt.Font;
+import javax.swing.JList;
+import javax.swing.AbstractListModel;
+import javax.swing.ListSelectionModel;
 
 public class PlayGame  extends JFrame  {
 
@@ -39,6 +42,7 @@ public class PlayGame  extends JFrame  {
 	private JTextField txtChooseYourPlay;
 	private JTextField textField;
 	public static boolean isOn = true;
+	private JList playlist;
 	/**
 	 * Launch the application.
 	 */
@@ -77,8 +81,8 @@ public class PlayGame  extends JFrame  {
 		
 		
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 750, 750);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(0, 0, 1025, 725);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -95,8 +99,9 @@ public class PlayGame  extends JFrame  {
 		
 		
 		JTextArea Field = new JTextArea(Scoreboard1.FieldGraphic());
+		Field.setFont(new Font("Courier New", Font.PLAIN, 13));
 		Field.setEditable(false);
-		Field.setBounds(21, 207, 560, 90);
+		Field.setBounds(21, 207, 933, 90);
 		contentPane.add(Field);
 		
 		
@@ -125,17 +130,13 @@ public class PlayGame  extends JFrame  {
 		lblPrompt.setBounds(32, 289, 445, 51);
 		contentPane.add(lblPrompt);
 		
-		Panel panel = new Panel();
-		panel.setBounds(587, 25, 200, 200);
-		contentPane.add(panel);
-		
 		
 		JLabel lblResult  = new JLabel(Result);
 		lblResult.setBounds(49, 456, 445, 16);
 		contentPane.add(lblResult);
 		
-		JComboBox<String> comboBox = new JComboBox<String>();
 		
+		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.setMaximumRowCount(20);
 		comboBox.setBounds(226, 31, 270, 27);
 		comboBox.addItem("run");
@@ -160,6 +161,27 @@ public class PlayGame  extends JFrame  {
 		contentPane.add(comboBox);
 		//contentPane.add(Field());
 		
+		
+		
+		/*playlist = new JList();
+		playlist.setLayoutOrientation(JList.VERTICAL_WRAP);
+		playlist.setVisibleRowCount(4);
+		playlist.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		playlist.setModel(new AbstractListModel() {
+			
+			String[] values = new String[] {"asfsad", "asdsad", "dsds", "dsdsffrgtfd", "gfdgfdg", "gfdgfdg"};
+
+			public int getSize() {
+				return values.length;
+			}
+			public Object getElementAt(int index) {
+				return values[index];
+			}
+		});
+		playlist.setBounds(278, 331, 122, 126);
+		contentPane.add(playlist);*/
+		
+		
 		JButton btnNewButton = new JButton("GO!!!!");
 		btnNewButton.addActionListener(new ActionListener() {
 			@SuppressWarnings("null")
@@ -172,7 +194,7 @@ public class PlayGame  extends JFrame  {
 				lblPrompt.setText(Scoreboard1.PromptForPlay());
 				Field.setText(Scoreboard1.FieldGraphic());
 				//draw.drawImage(Scoreboard1.UBERTRON,587, 25, 200, 200, panel );
-				contentPane.add(panel);
+				
 				
 				
 			}
@@ -234,8 +256,38 @@ public class PlayGame  extends JFrame  {
 		});
 		
 		
-		btnNewButton.setBounds(361, 59, 117, 29);
+		btnNewButton.setBounds(360, 119, 117, 29);
 		contentPane.add(btnNewButton);
+		
+		JButton btnStats = new JButton("STATS");
+		btnStats.addActionListener(new ActionListener() {
+			@SuppressWarnings("null")
+			
+			
+			public void actionPerformed(ActionEvent e) {
+				try {
+					StatUpdate.main(Scoreboard1.TeamNames(), Scoreboard1.Statbook());
+				} catch (NumberFormatException | NullPointerException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
+				
+				
+				
+				
+			}
+				
+		
+			
+			
+		});
+		
+		btnStats.setBounds(761, 78, 89, 23);
+		contentPane.add(btnStats);
+		
+		
 		
 		
 	
@@ -243,6 +295,5 @@ public class PlayGame  extends JFrame  {
 		
 		
 	}
-		
 	}
 
