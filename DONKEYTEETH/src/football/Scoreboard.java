@@ -262,6 +262,9 @@ public void updateClock(double time){
 			yardsbeforeturnover = donkeyteeth.nextPlay(PLAY, yardline);
 			yardline -= yardsbeforeturnover;
 			yardline1 = 100 - yardline;
+			if(yardline1 >99){
+				yardline1 =20;
+			}
 			updateMomentum(-1);
 			updateStats(4, 1);
 			HomeHasBall = !HomeHasBall;
@@ -288,6 +291,9 @@ public void updateClock(double time){
 			yardsbeforeturnover = (int) donkeyteeth.nextPlay(PLAY, yardline);
 			yardline -= yardsbeforeturnover;
 			yardline1 = 100 - yardline;
+			if(yardline1 >99){
+				yardline1 =20;
+			}
 			updateMomentum(-1);
 			updateStats(4, 1);
 			HomeHasBall = !HomeHasBall;
