@@ -11,16 +11,16 @@ import java.util.Scanner;
 import javax.imageio.ImageIO;
 
 public class Scoreboard {
-	public int yardline = -1;
+	Scanner gage = new Scanner(System.in);
+	public int yardline = 80;
 	public static int power =0;
-	int yardstofirst = -1;
-	int down = -1;
+	int yardstofirst = 10;
+	int down = 1;
 	String Megatron = "";
 	String Jumbotron = "";
 	Team HomeTeam, AwayTeam;
 	int HomeScore, AwayScore;
 	boolean HomeHasBall = false;
-	Scanner gage = new Scanner(System.in);
 	public static double clock = 15;
 	public static int quarter = 1;
 	public int quarterlength = 5;
@@ -35,31 +35,38 @@ public class Scoreboard {
 		HomeScore = 0;
 		AwayScore = 0;
 		
+		//Information about the Home Team
 		HomeTeam = new Team();
 		HomeTeam.name = infotec[0][0];
 		HomeTeam.isCPU = Boolean.valueOf(infotec[0][1]);
 		HomeTeam.overall = Integer.parseInt(infotec[0][2]);
 		HomeTeam.momentum = Integer.parseInt(infotec[0][3]);
 		
+		// Information about the Away Team
 		AwayTeam = new Team();
 		AwayTeam.name = infotec[1][0];
 		AwayTeam.isCPU =  Boolean.valueOf(infotec[1][1]);
 		AwayTeam.overall = Integer.parseInt(infotec[1][2]);
 		AwayTeam.momentum = Integer.parseInt(infotec[1][3]);
 		
+		//Setting up Scoreboard
 		HomeHasBall = true;
 		Megatron = "";
 		Jumbotron = "";
+		
+		//Setting up Clock Mechanism
 		clock = 100*quarterlength;
 		quarter = 1;
-		setQuarterLength(quarterlength);
 		StartDrive();
 
 	}
 	
-	
-	
 	public void setPower(){
+		
+		/*This method sets up the "power" of a team.
+		* At this point, power is based on the difference in overalls of the teams
+		* As well as the momentum a team has. 
+		*/
 		int difference = HomeTeam.overall - AwayTeam.overall;
 		HomeTeam.power = difference + HomeTeam.momentum;
 		
@@ -80,8 +87,9 @@ public class Scoreboard {
 		
 	}
 	
-	
 	public void updateStats(int stat, int increase){
+		
+		//This method is in place to update the statistics of a team after each play.
 		 if(HomeHasBall){
 		HomeTeam.stats[stat] += increase;
 		}else{
@@ -96,8 +104,8 @@ public class Scoreboard {
 		
 	}
 
-	
 	public int [][] Statbook(){
+		//An int array that contains the stats of both teams.
 		int[][] ret = new int[2][5];
 		ret[0][0] = HomeScore;
 		ret[1][0] = AwayScore;
@@ -112,7 +120,9 @@ public class Scoreboard {
 		return ret;
 	}
 	
-public String[] TeamNames(){
+	public String[] TeamNames(){
+		
+		//Because Strings don't fit into an int array. Will eventually be used for other String stats.
 		String[]ret = new String[2];
 		
 		ret[0] = HomeTeam.name;
@@ -121,7 +131,8 @@ public String[] TeamNames(){
 		return ret;
 	}
 	
-public void updateMomentum(int sway){
+	public void updateMomentum(int sway){
+		//Updates the momentum of each team.
 		if(HomeHasBall){
 			HomeTeam.momentum += sway;
 			
@@ -134,7 +145,8 @@ public void updateMomentum(int sway){
 		
 	}
 	
-public void updateClock(double time){
+	public void updateClock(double time){
+		//Updates the clock after every play.
 		clock = clock - time;
 		updateStats(3, (int) time);
 		if(clock <= 0){
@@ -149,6 +161,7 @@ public void updateClock(double time){
 	}
 	 
 	public Team TeamWithBall(){
+		//Currently out of use...
 		if(HomeHasBall){
 			return HomeTeam;
 			
@@ -159,14 +172,15 @@ public void updateClock(double time){
 	
 	private boolean QuarterChanged = false;
 	
-	
 	public void CheckForQuarterChange(){
+		//Sets up Halftime if the time is right
 		if(QuarterChanged){
 			
 			if(quarter == 3){
 				HomeHasBall = false;
 				StartDrive();
-				Jumbotron += "\n-----( = )-----\nHALFTIME";
+				
+				Jumbotron += "\n HALFTIME";
 				
 			}
 			
@@ -180,49 +194,9 @@ public void updateClock(double time){
 		
 		
 	}
-	
-	
-	public void setQuarterLength(int length) {
-		while (length < 1 || length > 30) {
-			out.println("Sorry, Quarter Length must be between 1 and 30.\n The recommended time is 15 minutes.");
-			out.println("How long of quarters in game?");
-			length = gage.nextInt();
-
-		}
-
-		this.quarterlength = length*100;
-	}
-
-	public void SetTeams(int players) {
-		while (players > 2) {
-			out.println("This is football, there can only be two teams");
-			out.println("How many players?");
-			players = gage.nextInt();
-		}
-
-		if (players == 1) {
-			out.println("You are the Home Team. What is your team name?");
-			HomeTeam.name = gage.next();
-			HomeTeam.isCPU = false;
-			out.println("You are the " + HomeTeam.name + "! Good Luck!!!");
-
-		} else {
-			out.print("Home Team Name: ");
-			HomeTeam.name = gage.next();
-			out.print("Away Team Name:");
-			AwayTeam.name = gage.next();
-
-			if (players == 2) {
-				HomeTeam.isCPU = false;
-				AwayTeam.isCPU = false;
-
-			}
-
-		}
-
-	}
 
 	private void UpdateScore(int ScoreChange) {
+		//Updates the score during a score change
 		if (HomeHasBall)
 			HomeScore += ScoreChange;
 		else
@@ -232,6 +206,7 @@ public void updateClock(double time){
 
 	public String nextPlay(String play) {
 
+		//Part of the Next play series that determines how a play will be called.
 		if (HomeHasBall) {
 			return HomeTeam.nextPlay(this, play);
 		} else {
@@ -242,6 +217,8 @@ public void updateClock(double time){
 	}
 
 	public String PromptForPlay() {
+		
+		//Designed to prompt a user for their next action, based on whether a player or CPU has the ball.
 		if (HomeHasBall && HomeTeam.isCPU)
 			return (HomeTeam.name + " have the ball. Press GO to Continue.");
 		if (HomeHasBall && !HomeTeam.isCPU)
@@ -253,17 +230,19 @@ public void updateClock(double time){
 	}
 
 	public String UpdateScoreboardAfterPlay(int yardsgained, String PLAY) {
+		
+		//The grand machismo of all the methods. This updates the Scoreboard after a play.
 		footballSimMethods donkeyteeth = new footballSimMethods();
 		double yardsbeforeturnover = 0;
 		int yardline1 = 0;
-
 		Jumbotron = "";
+		
 		if (yardsgained == -555) {
 			yardsbeforeturnover = donkeyteeth.nextPlay(PLAY, yardline);
 			yardline -= yardsbeforeturnover;
 			yardline1 = 100 - yardline;
 			if(yardline1 >99){
-				yardline1 =20;
+				yardline1 =80;
 			}
 			updateMomentum(-1);
 			updateStats(4, 1);
@@ -292,7 +271,7 @@ public void updateClock(double time){
 			yardline -= yardsbeforeturnover;
 			yardline1 = 100 - yardline;
 			if(yardline1 >99){
-				yardline1 =20;
+				yardline1 =80;
 			}
 			updateMomentum(-1);
 			updateStats(4, 1);
