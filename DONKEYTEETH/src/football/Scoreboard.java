@@ -75,10 +75,10 @@ public class Scoreboard {
 		
 		
 		if(HomeHasBall){
-			power = HomeTeam.power;
+			power = HomeTeam.power/10;
 			
 		}else{
-			power = AwayTeam.power;
+			power = AwayTeam.power/10;
 			
 		}
 		
@@ -151,7 +151,7 @@ public class Scoreboard {
 		updateStats(3, (int) time);
 		if(clock <= 0){
 			quarter ++;
-			clock =quarterlength;
+			clock =100*quarterlength;
 			QuarterChanged = true;
 			
 		}
@@ -181,6 +181,7 @@ public class Scoreboard {
 				StartDrive();
 				
 				Jumbotron += "\n HALFTIME";
+				
 				
 			}
 			
