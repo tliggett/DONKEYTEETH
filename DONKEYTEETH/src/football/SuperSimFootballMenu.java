@@ -9,6 +9,7 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Timer;
 
@@ -65,7 +66,13 @@ public class SuperSimFootballMenu  extends JFrame  {
 	 */
 	public SuperSimFootballMenu() throws NumberFormatException, FileNotFoundException, NullPointerException {
 		Graphics draw = null;
-	
+		
+		String[][] teamdata = getData("data/proteams.txt");
+		String[] teamnames = new String[100];
+		
+		for(int i = 0; i<teamdata.length; i++){
+			teamnames[i] = teamdata[i][0];
+		}
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 500);
@@ -128,7 +135,7 @@ public class SuperSimFootballMenu  extends JFrame  {
 		chckbxCpuPlayer_1.setBounds(328, 226, 97, 23);
 		contentPane.add(chckbxCpuPlayer_1);
 		
-		String [][] args = new String [2][4];
+		String [][] args = new String [2][7];
 		
 		
 		JButton btnNewButton = new JButton("Play Game");
@@ -138,11 +145,10 @@ public class SuperSimFootballMenu  extends JFrame  {
 			public void actionPerformed(ActionEvent e) {
 			try {					
 				
-				for(int i = 0; i<2; i++){
-					for(int j = 0; j<4; j++){
-						args[i][j] = "0";
-					}
-				}
+				
+				
+				
+				
 				
 				String gonnasplit = (String) (comboBox.getSelectedItem());
 				String [] line = gonnasplit.split("OVR:");
@@ -173,6 +179,31 @@ public class SuperSimFootballMenu  extends JFrame  {
 		
 		btnNewButton.setBounds(177, 292, 117, 29);
 		contentPane.add(btnNewButton);
+		
+		
+		
+	}
+	public String [][] getData(String filename){
+		String [][] d = new String[2][5];
+		ArrayList<String[]> mat = new ArrayList<String[]>();
+			try {
+				mat = ReadFile.readfile(filename);
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			
+		for(int i = 0; i<2; i++){
+			String [] ray = new String[5];
+			ray = mat.get(i);
+			
+			
+			for(int j = 0; j<5; j++){
+				d[i][j] = ray[j];
+			}
+		}
+		return d;
 		
 		
 		
