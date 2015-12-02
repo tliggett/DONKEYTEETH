@@ -40,14 +40,23 @@ public class Scoreboard {
 		HomeTeam.name = infotec[0][0];
 		HomeTeam.isCPU = Boolean.valueOf(infotec[0][1]);
 		HomeTeam.overall = Integer.parseInt(infotec[0][2]);
-		HomeTeam.momentum = Integer.parseInt(infotec[0][3]);
+		HomeTeam.momentum = 0;
+		HomeTeam.passO = Integer.parseInt(infotec[0][3]);
+		HomeTeam.runO = Integer.parseInt(infotec[0][4]);
+		HomeTeam.passD = Integer.parseInt(infotec[0][5]);
+		HomeTeam.runD = Integer.parseInt(infotec[0][6]);
+	
 		
 		// Information about the Away Team
 		AwayTeam = new Team();
 		AwayTeam.name = infotec[1][0];
 		AwayTeam.isCPU =  Boolean.valueOf(infotec[1][1]);
 		AwayTeam.overall = Integer.parseInt(infotec[1][2]);
-		AwayTeam.momentum = Integer.parseInt(infotec[1][3]);
+		AwayTeam.momentum = 0;
+		AwayTeam.passO = Integer.parseInt(infotec[1][3]);
+		AwayTeam.runO = Integer.parseInt(infotec[1][4]);
+		AwayTeam.passD = Integer.parseInt(infotec[1][5]);
+		AwayTeam.runD = Integer.parseInt(infotec[1][6]);
 		
 		//Setting up Scoreboard
 		HomeHasBall = true;
@@ -61,24 +70,36 @@ public class Scoreboard {
 
 	}
 	
-	public void setPower(){
+	public void setPower(String PLAY){
 		
 		/*This method sets up the "power" of a team.
 		* At this point, power is based on the difference in overalls of the teams
 		* As well as the momentum a team has. 
 		*/
-		int difference = HomeTeam.overall - AwayTeam.overall;
-		HomeTeam.power = difference + HomeTeam.momentum;
+		if(Playbook.IsRun(PLAY)){
+			int difference = HomeTeam.runO-AwayTeam.runD;
+			HomeTeam.power = difference + HomeTeam.momentum;
+			
+			difference = AwayTeam.runO - HomeTeam.runD;
+			AwayTeam.power = difference + AwayTeam.momentum;
+		}else{
+			int difference = HomeTeam.passO - AwayTeam.passD;
+			HomeTeam.power = difference + HomeTeam.momentum;
+			
+			difference = AwayTeam.passO - HomeTeam.passD;
+			AwayTeam.power = difference + AwayTeam.momentum;
+			
+			
+			
+		}
 		
-		difference = AwayTeam.overall - HomeTeam.overall;
-		AwayTeam.power = difference + AwayTeam.momentum;
 		
 		
 		if(HomeHasBall){
-			power = HomeTeam.power/10;
+			power = HomeTeam.power/5;
 			
 		}else{
-			power = AwayTeam.power/10;
+			power = AwayTeam.power/5;
 			
 		}
 		

@@ -26,8 +26,10 @@ public class footballSimMethods {
 			return this.FGResult(yardline);
 		}else if (PLAY.equals("punt")){
 			return (int) this.PuntResult();
+		}else if (PLAY.equals("pizza")){
+			return 1000;
 		} else {
-		return -999;
+		return 0;
 		}
 		
 	}

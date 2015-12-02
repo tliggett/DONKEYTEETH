@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Playbook {
 	
 	public static int isRun = 0;
-	public static Play[] playlist = new Play[17];
+	public static Play[] playlist = new Play[16];
 	
 	public static boolean IsValidPlay(String PLAY) {
 		Playbook Playbook1 = new Playbook();

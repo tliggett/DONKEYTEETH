@@ -9,6 +9,10 @@ public class Team {
 	public int power = 0;
 	public int momentum = 0;
 	public String name = "";  
+	public int runO = 0;
+	public int passO = 0;
+	public int runD = 0;
+	public int passD = 0;
 	public int[] stats = new int[] {0,0,0,0,0};
 	public boolean isCPU = false;
 	double rods;

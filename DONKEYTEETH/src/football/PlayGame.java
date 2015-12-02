@@ -135,26 +135,19 @@ public class PlayGame  extends JFrame  {
 		lblResult.setBounds(49, 456, 445, 16);
 		contentPane.add(lblResult);
 		
-		
+		String [] playnames = new String[Playbook1.playlist.length];
+		for(int i = 0; i <Playbook1.playlist.length; i ++){
+			playnames[i] = Playbook1.playlist[i].name;
+			
+		}
 		JComboBox<String> comboBox = new JComboBox<String>();
-		comboBox.setMaximumRowCount(20);
+		comboBox.setEditable(true);
+		comboBox.setMaximumRowCount(17);
 		comboBox.setBounds(226, 31, 270, 27);
-		comboBox.addItem("run");
-		comboBox.addItem("counter");
-		comboBox.addItem("pass");
-		comboBox.addItem("dive");
-		comboBox.addItem("pitch");
-		comboBox.addItem("powero");
-		comboBox.addItem("reverse");
-		comboBox.addItem("sweep");
-		comboBox.addItem("sneak");
-		comboBox.addItem("screen");
-		comboBox.addItem("slants");
-		comboBox.addItem("verticals");
-		comboBox.addItem("curls");
-		comboBox.addItem("hailmary");
-		comboBox.addItem("flag");
-		comboBox.addItem("playaction");
+		for(int i = 0; i <Playbook1.playlist.length; i ++){
+			comboBox.addItem(playnames[i]);
+			
+		}
 		comboBox.addItem("punt");
 		comboBox.addItem("fg");
 		
@@ -205,7 +198,7 @@ public class PlayGame  extends JFrame  {
 				String play = "";
 				play = (String) (comboBox.getSelectedItem());
 				PLAY = Scoreboard1.nextPlay(play);
-				Scoreboard1.setPower();
+				Scoreboard1.setPower(PLAY);
 				yds = donkeyteeth.nextPlay(PLAY, Scoreboard1.yardline);
 				String Result = Scoreboard1.UpdateScoreboardAfterPlay(yds,PLAY);
 				lblResult.setText(Result);

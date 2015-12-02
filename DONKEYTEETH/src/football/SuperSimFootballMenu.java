@@ -68,7 +68,7 @@ public class SuperSimFootballMenu  extends JFrame  {
 		Graphics draw = null;
 		
 		String[][] teamdata = getData("data/proteams.txt");
-		String[] teamnames = new String[100];
+		String[] teamnames = new String[teamdata.length];
 		
 		for(int i = 0; i<teamdata.length; i++){
 			teamnames[i] = teamdata[i][0];
@@ -93,14 +93,10 @@ public class SuperSimFootballMenu  extends JFrame  {
 		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.setMaximumRowCount(20);
 		comboBox.setBounds(6, 192, 189, 27);
-		comboBox.addItem("Minnesota Vikings OVR:86");
-		comboBox.addItem("New York Giants OVR:82");
-		comboBox.addItem("Philadelphia Eagles OVR:81");
-		comboBox.addItem("Detroit Lions OVR:80");
-		comboBox.addItem("Green Bay Packers OVR:87");
-		comboBox.addItem("Chicago Bears OVR:81");
-		comboBox.addItem("New England Patriots OVR:95");
-		comboBox.addItem("Carolina Panthers OVR:94");
+		for(int i = 0; i<teamdata.length; i++){
+			comboBox.addItem(teamnames[i]);
+			
+		}
 		
 		
 		
@@ -110,14 +106,10 @@ public class SuperSimFootballMenu  extends JFrame  {
 		JComboBox<String> comboBox1 = new JComboBox<String>();
 		comboBox1.setMaximumRowCount(20);
 		comboBox1.setBounds(266, 192, 228, 27);
-		comboBox1.addItem("Green Bay Packers OVR:87");
-		comboBox1.addItem("Minnesota Vikings OVR:86");
-		comboBox1.addItem("New York Giants OVR:82");
-		comboBox1.addItem("Philadelphia Eagles OVR:81");
-		comboBox1.addItem("Detroit Lions OVR:80");
-		comboBox1.addItem("Chicago Bears OVR:81");
-		comboBox1.addItem("New England Patriots OVR:95");
-		comboBox1.addItem("Carolina Panthers OVR:94");
+		for(int i = 0; i<teamdata.length; i++){
+			comboBox1.addItem(teamnames[i]);
+			
+		}
 		contentPane.add(comboBox1);
 		
 		
@@ -150,17 +142,63 @@ public class SuperSimFootballMenu  extends JFrame  {
 				
 				
 				
-				String gonnasplit = (String) (comboBox.getSelectedItem());
-				String [] line = gonnasplit.split("OVR:");
-				args[0][0] = line[0];
-				args[0][1] = Boolean.toString(chckbxCpuPlayer.isSelected());
-				args[0][2] = line[1];
+				String teamn = (String) (comboBox.getSelectedItem());
 				
-				String gonnasplit1 = (String) (comboBox1.getSelectedItem());
-				String [] line1 = gonnasplit1.split("OVR:");
-				args[1][0] = line1[0];
-				args[1][1] = Boolean.toString(chckbxCpuPlayer_1.isSelected());
-				args[1][2] = line1[1];
+				
+				
+				int[] teamstats = new int[4];
+				int ovr = 0;
+				
+				
+				for(int i = 0; i<teamdata.length; i++ ){
+					if(teamn == "Legendary"){
+						args[0][0] = "Legendary Greats";
+						args[0][1] = Boolean.toString(chckbxCpuPlayer.isSelected());
+						
+						
+						args[0][2] = "1000";
+						
+						for(int j = 0; j<4; j++){
+							args[0][j+3] = "1000";
+							
+						}
+					}
+					else if(teamdata[i][0] == teamn){
+						args[0][0] = teamn;
+						args[0][1] = Boolean.toString(chckbxCpuPlayer.isSelected());
+						for(int j = 1; j<5; j++){
+							teamstats[j-1] =Integer.parseInt(teamdata[i][j]);
+							ovr += teamstats[j-1];
+						}
+						args[0][2] = "" + ovr/4;
+						
+						for(int j = 0; j<4; j++){
+							args[0][j+3] = teamdata[i][j+1];
+							
+						}
+					}
+				}
+				
+				
+				String teamn1 = (String) (comboBox1.getSelectedItem());
+				int[] teamstats1 = new int[4];
+				int ovr1 = 0;
+				for(int i = 0; i<teamdata.length; i++ ){
+					if(teamdata[i][0] == teamn1){
+						args[1][0] = teamn1;
+						args[1][1] = Boolean.toString(chckbxCpuPlayer_1.isSelected());
+						for(int j = 1; j<5; j++){
+							teamstats[j-1] =Integer.parseInt(teamdata[i][j]);
+							ovr1 += teamstats[j-1];
+						}
+						args[1][2] = "" + ovr1/4;
+						
+						for(int j = 0; j<4; j++){
+							args[1][j+3] = teamdata[i][j+1];
+							
+						}
+					}
+				}
 				
 				PlayGame.main(args);
 				
@@ -184,8 +222,9 @@ public class SuperSimFootballMenu  extends JFrame  {
 		
 	}
 	public String [][] getData(String filename){
-		String [][] d = new String[2][5];
+		
 		ArrayList<String[]> mat = new ArrayList<String[]>();
+		
 			try {
 				mat = ReadFile.readfile(filename);
 			} catch (FileNotFoundException e1) {
@@ -193,8 +232,8 @@ public class SuperSimFootballMenu  extends JFrame  {
 				e1.printStackTrace();
 			}
 			
-			
-		for(int i = 0; i<2; i++){
+		String [][] d = new String[32][5];	
+		for(int i = 0; i<d.length; i++){
 			String [] ray = new String[5];
 			ray = mat.get(i);
 			
