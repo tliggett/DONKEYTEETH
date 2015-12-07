@@ -132,7 +132,7 @@ public class PlayGame  extends JFrame  {
 		
 		
 		JLabel lblResult  = new JLabel(Result);
-		lblResult.setBounds(49, 456, 445, 16);
+		lblResult.setBounds(49, 456, 853, 16);
 		contentPane.add(lblResult);
 		
 		String [] playnames = new String[Playbook1.playlist.length];
