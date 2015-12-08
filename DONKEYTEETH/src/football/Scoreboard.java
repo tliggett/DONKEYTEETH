@@ -43,8 +43,8 @@ public class Scoreboard {
 		HomeTeam.momentum = 0;
 		HomeTeam.passO = Integer.parseInt(infotec[0][3]);
 		HomeTeam.runO = Integer.parseInt(infotec[0][4]);
-		HomeTeam.passD = Integer.parseInt(infotec[0][5]);
-		HomeTeam.runD = Integer.parseInt(infotec[0][6]);
+		HomeTeam.passD = Integer.parseInt(infotec[0][6]);
+		HomeTeam.runD = Integer.parseInt(infotec[0][5]);
 	
 		
 		// Information about the Away Team
@@ -55,8 +55,8 @@ public class Scoreboard {
 		AwayTeam.momentum = 0;
 		AwayTeam.passO = Integer.parseInt(infotec[1][3]);
 		AwayTeam.runO = Integer.parseInt(infotec[1][4]);
-		AwayTeam.passD = Integer.parseInt(infotec[1][5]);
-		AwayTeam.runD = Integer.parseInt(infotec[1][6]);
+		AwayTeam.passD = Integer.parseInt(infotec[1][6]);
+		AwayTeam.runD = Integer.parseInt(infotec[1][5]);
 		
 		//Setting up Scoreboard
 		HomeHasBall = true;
@@ -78,16 +78,16 @@ public class Scoreboard {
 		*/
 		if(Playbook.IsRun(PLAY)){
 			int difference = HomeTeam.runO-AwayTeam.runD;
-			HomeTeam.power = difference + HomeTeam.momentum;
+			HomeTeam.power = difference*2 + HomeTeam.momentum;
 			
 			difference = AwayTeam.runO - HomeTeam.runD;
-			AwayTeam.power = difference + AwayTeam.momentum;
+			AwayTeam.power = difference*2 + AwayTeam.momentum;
 		}else{
 			int difference = HomeTeam.passO - AwayTeam.passD;
-			HomeTeam.power = difference + HomeTeam.momentum;
+			HomeTeam.power = difference*2 + HomeTeam.momentum;
 			
 			difference = AwayTeam.passO - HomeTeam.passD;
-			AwayTeam.power = difference + AwayTeam.momentum;
+			AwayTeam.power = difference*2 + AwayTeam.momentum;
 			
 			
 			
@@ -96,10 +96,10 @@ public class Scoreboard {
 		
 		
 		if(HomeHasBall){
-			power = HomeTeam.power/5;
+			power = HomeTeam.power/4;
 			
 		}else{
-			power = AwayTeam.power/5;
+			power = AwayTeam.power/4;
 			
 		}
 		

@@ -154,7 +154,7 @@ public class PlayGame  extends JFrame  {
 		contentPane.add(comboBox);
 		
 		JLabel lblPlayCall = new JLabel("Play Call");
-		lblPlayCall.setBounds(633, 144, 61, 16);
+		lblPlayCall.setBounds(633, 144, 217, 16);
 		contentPane.add(lblPlayCall);
 		
 		
@@ -232,7 +232,8 @@ public class PlayGame  extends JFrame  {
 					comboBox.setEnabled(false);
 					btnNewButton.setEnabled(false);
 					lblResult.setText("GAME OVER!!! " + Scoreboard1.ReportScore());
-					
+					Field.setVisible(false);
+					lblPrompt.setVisible(false);
 					
 					/*String[] args = {"0", "0", "0", "0"};
 					args[0] = ("Game Over. " + Scoreboard1.ReportScore() );

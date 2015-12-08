@@ -120,12 +120,20 @@ public class SuperSimFootballMenu  extends JFrame  {
 		contentPane.add(lblVs);
 		
 		JCheckBox chckbxCpuPlayer = new JCheckBox("CPU Player");
-		chckbxCpuPlayer.setBounds(44, 226, 97, 23);
+		chckbxCpuPlayer.setBounds(44, 226, 151, 23);
 		contentPane.add(chckbxCpuPlayer);
 		
 		JCheckBox chckbxCpuPlayer_1 = new JCheckBox("CPU Player");
-		chckbxCpuPlayer_1.setBounds(328, 226, 97, 23);
+		chckbxCpuPlayer_1.setBounds(328, 226, 151, 23);
 		contentPane.add(chckbxCpuPlayer_1);
+		
+		JCheckBox chkrand = new JCheckBox("Random Team");
+		chkrand.setBounds(44, 261, 151, 23);
+		contentPane.add(chkrand);
+		
+		JCheckBox chkrand_1 = new JCheckBox("Random Team");
+		chkrand_1.setBounds(328, 261, 151, 23);
+		contentPane.add(chkrand_1);
 		
 		String [][] args = new String [2][7];
 		
@@ -151,6 +159,10 @@ public class SuperSimFootballMenu  extends JFrame  {
 				
 				
 				for(int i = 0; i<teamdata.length; i++ ){
+					if(chkrand.isSelected()){
+						int r = (int) (32*Math.random());
+						teamn = teamdata[r][0];
+					}
 					if(teamn == "Legendary"){
 						args[0][0] = "Legendary Greats";
 						args[0][1] = Boolean.toString(chckbxCpuPlayer.isSelected());
@@ -184,6 +196,11 @@ public class SuperSimFootballMenu  extends JFrame  {
 				int[] teamstats1 = new int[4];
 				int ovr1 = 0;
 				for(int i = 0; i<teamdata.length; i++ ){
+					if(chkrand_1.isSelected()){
+						int r = (int) (32*Math.random());
+						teamn = teamdata[r][0];
+					}
+					
 					if(teamdata[i][0] == teamn1){
 						args[1][0] = teamn1;
 						args[1][1] = Boolean.toString(chckbxCpuPlayer_1.isSelected());
@@ -217,6 +234,8 @@ public class SuperSimFootballMenu  extends JFrame  {
 		
 		btnNewButton.setBounds(177, 292, 117, 29);
 		contentPane.add(btnNewButton);
+		
+		
 		
 		
 		

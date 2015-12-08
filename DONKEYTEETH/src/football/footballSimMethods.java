@@ -28,6 +28,8 @@ public class footballSimMethods {
 			return (int) this.PuntResult();
 		}else if (PLAY.equals("pizza")){
 			return 1000;
+		}else if(PLAY.equals("allstot")){
+			return -100;
 		} else {
 		return 0;
 		}
