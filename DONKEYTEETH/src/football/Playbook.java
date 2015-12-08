@@ -49,6 +49,36 @@ public class Playbook {
 		
 		
 	}
+	public static String bestplay(Scoreboard sb, int yds){
+		String chosen = "";
+		int bestposition = 100;
+		int position = 0;
+		for (int i = 0; i < playlist.length; i++) {
+			for (int j = 0; j < playlist[i].odds.length; j++){
+					String taco = playlist[i].name;
+					sb.setPower(taco);
+					int pos = 0;
+					pos = j+(Scoreboard.power);
+					if(pos>99){
+						pos = 99;
+					}
+					if(pos<0){
+						pos = 0;
+					}
+					if(playlist[i].odds[pos] >= yds){
+						position = j;
+						if(position < bestposition){
+							bestposition = position;
+							chosen = playlist[i].name;
+						}
+						
+					}}}
+		
+		return chosen;
+		
+		
+	}
+	
 	
 	public void loadPlaybook() throws NumberFormatException, NullPointerException, FileNotFoundException{
 		ArrayList<String[]> mat = new ArrayList<String[]>();

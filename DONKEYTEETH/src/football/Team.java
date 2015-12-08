@@ -28,13 +28,11 @@ public class Team {
 					return "punt";
 			}
 			
+		if(sb.down == 1){
+			return Playbook.bestplay(sb, 5);
+		}
 			
-			
-			rods = 100*Math.random();			
-			if(rods <= 50)
-				return "run";
-			else
-				return "pass";
+			return Playbook.bestplay(sb, sb.yardstofirst);
 		}
 		
 		String PLAY = play;
