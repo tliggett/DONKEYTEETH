@@ -21,18 +21,35 @@ public class Team {
 	public String nextPlay(Scoreboard sb, String play){
 		
 		if(isCPU){
-			if(sb.down == 4){
+			if(sb.down == 4 && Scoreboard.quarter != 4){
 				if(sb.yardline < 45)
 					return "fg";
 				else if(sb.yardline > 54)
 					return "punt";
 			}
 			
-		if(sb.down == 1){
-			return Playbook.bestplay(sb, 5);
-		}
+		
+			int div = 1;
+			int send = 0;
+			div =sb.down;
+			if(sb.down>3){
+				div = 1;
+			}
+			send = (10)/(4-div);
+			if(Scoreboard.quarter == 4 && ((sb.HomeHasBall && sb.AwayScore > sb.HomeScore)||(!sb.HomeHasBall && sb.AwayScore < sb.HomeScore))){
+				if(sb.down<4){
+				send = (int) ((sb.yardline)/(Scoreboard.clock/50));
+				}else{
+				send = sb.yardstofirst;	
+					
+				}
+				
+			}
 			
-			return Playbook.bestplay(sb, sb.yardstofirst);
+			
+			
+			
+			return Playbook.bestplay(sb,send);
 		}
 		
 		String PLAY = play;

@@ -30,3 +30,4 @@ New England Patriots,94,86,85,87,
 San Diego Chargers,90,80,83,80,	
 Cleveland Browns,76,78,82,78,	
 Detroit Lions,88,72,84,83,	
+

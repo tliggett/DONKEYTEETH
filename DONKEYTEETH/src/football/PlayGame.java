@@ -152,6 +152,12 @@ public class PlayGame  extends JFrame  {
 		comboBox.addItem("fg");
 		
 		contentPane.add(comboBox);
+		
+		JLabel lblPlayCall = new JLabel("Play Call");
+		lblPlayCall.setBounds(633, 144, 61, 16);
+		contentPane.add(lblPlayCall);
+		
+		
 		//contentPane.add(Field());
 		
 		
@@ -186,6 +192,7 @@ public class PlayGame  extends JFrame  {
 				lblYardline.setText(Scoreboard1.ReportYardsToEndzone());
 				lblPrompt.setText(Scoreboard1.PromptForPlay());
 				Field.setText(Scoreboard1.FieldGraphic());
+				lblPlayCall.setText(PLAY);
 				//draw.drawImage(Scoreboard1.UBERTRON,587, 25, 200, 200, panel );
 				
 				
@@ -279,6 +286,8 @@ public class PlayGame  extends JFrame  {
 		
 		btnStats.setBounds(761, 78, 89, 23);
 		contentPane.add(btnStats);
+		
+		
 		
 		
 		
