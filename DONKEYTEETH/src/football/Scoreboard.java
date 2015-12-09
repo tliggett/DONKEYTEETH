@@ -24,7 +24,7 @@ public class Scoreboard {
 	public static double clock = 15;
 	public static int quarter = 1;
 	public int quarterlength = 5;
-	
+	public int drivestart = 80;
 	
 	
 	public void StartGame(String[][] infotec) {
@@ -96,10 +96,10 @@ public class Scoreboard {
 		
 		
 		if(HomeHasBall){
-			power = HomeTeam.power/4;
+			power = HomeTeam.power/5;
 			
 		}else{
-			power = AwayTeam.power/4;
+			power = AwayTeam.power/5;
 			
 		}
 		
@@ -286,6 +286,7 @@ public class Scoreboard {
 				updateMomentum(1);
 				StartDrive();
 				yardline = yardline1;
+				drivestart = yardline;
 				return Megatron;
 			}
 		} else if (yardsgained == -777) {
@@ -315,6 +316,7 @@ public class Scoreboard {
 				StartDrive();
 				updateMomentum(1);
 				yardline = yardline1;
+				drivestart = yardline;
 				return Megatron;
 			}
 		} else if (PLAY.equals("fg")) {
@@ -428,6 +430,7 @@ public class Scoreboard {
 				yardline1 = 100 - yardline;
 				StartDrive();
 				yardline = yardline1;
+				drivestart = yardline;
 			}
 			return Megatron;
 
@@ -448,6 +451,7 @@ public class Scoreboard {
 		yardline = 80;
 		yardstofirst = 10;
 		down = 1;
+		drivestart = yardline;
 	}
 
 	public String ReportScore() {
@@ -540,6 +544,38 @@ public String FieldGraphic(){
 	String yards = "";
 	
 	yards +=("||");
+	for(int i = 1; i <=99; i++ ){
+		if(GoingRight){
+			if(i == 100-yardline){
+					yards +=(">");
+				}
+			if(i== 100-yardline+yardstofirst){
+					yards +=("|");	
+			
+					}
+				else{
+						yards+=("-");
+		
+					}
+		}else{
+			if(i == yardline){
+				
+				
+				
+				
+				yards+=("<");
+				}
+				if(i== yardline-yardstofirst){
+					yards+=("|");	
+					
+				}
+				else{
+					yards+=("-");
+		}
+		}
+		
+	}
+	
 	for(int i = 1; i <=99; i++ ){
 		if(GoingRight){
 			if(i == 100-yardline){

@@ -26,6 +26,17 @@ import java.awt.Font;
 import javax.swing.JList;
 import javax.swing.AbstractListModel;
 import javax.swing.ListSelectionModel;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JPopupMenu;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.ButtonGroup;
+import javax.swing.SwingConstants;
 
 public class PlayGame  extends JFrame  {
 
@@ -43,6 +54,7 @@ public class PlayGame  extends JFrame  {
 	private JTextField textField;
 	public static boolean isOn = true;
 	private JList playlist;
+	private final Action action = new SwingAction();
 	/**
 	 * Launch the application.
 	 */
@@ -83,6 +95,36 @@ public class PlayGame  extends JFrame  {
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(0, 0, 1025, 725);
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnGame = new JMenu("Game");
+		menuBar.add(mnGame);
+		
+		JMenuItem mntmStatistics = new JMenuItem("STATISTICS");
+		mntmStatistics.setHorizontalTextPosition(SwingConstants.LEFT);
+		mntmStatistics.setAction(action);
+		mnGame.add(mntmStatistics);
+		
+		/*JMenu mnSupersim = new JMenu("SUPERSIM");
+		menuBar.add(mnSupersim);
+		
+		JMenuItem mntmSimulate = new JMenuItem("Simulate");
+		mnSupersim.add(mntmSimulate);
+		
+		 
+		JRadioButtonMenuItem rdbtnmntmDrive = new JRadioButtonMenuItem("Drive");
+		JRadioButtonMenuItem rdbtnmntmQuarter = new JRadioButtonMenuItem("Quarter");
+		JRadioButtonMenuItem rdbtnmntmGame = new JRadioButtonMenuItem("Game");
+		
+		ButtonGroup group = new ButtonGroup();
+		group.add(rdbtnmntmDrive);
+		group.add(rdbtnmntmQuarter);
+		group.add(rdbtnmntmGame);
+		
+		mnSupersim.add(group);*/
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -123,7 +165,7 @@ public class PlayGame  extends JFrame  {
 		
 		JLabel lblYardline  = new JLabel(Scoreboard1.ReportYardsToEndzone());
 		lblYardline.setFont(new Font("Tamil MN", Font.BOLD, 22));
-		lblYardline.setBounds(27, 351, 504, 50);
+		lblYardline.setBounds(21, 378, 504, 50);
 		contentPane.add(lblYardline);
 		
 		JLabel lblPrompt  = new JLabel(Scoreboard1.PromptForPlay());
@@ -260,9 +302,29 @@ public class PlayGame  extends JFrame  {
 		btnNewButton.setBounds(360, 119, 117, 29);
 		contentPane.add(btnNewButton);
 		
-		JButton btnStats = new JButton("STATS");
-		btnStats.addActionListener(new ActionListener() {
-			@SuppressWarnings("null")
+		
+		
+		
+		
+		
+	
+	
+		
+		
+	}
+	private static void addPopup(Component component, final JPopupMenu popup) {
+	}
+	private class SwingAction extends AbstractAction {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+
+		public SwingAction() {
+			putValue(NAME, "Game Statistics");
+			putValue(SHORT_DESCRIPTION, "Some short description");
+		}
 			
 			
 			public void actionPerformed(ActionEvent e) {
@@ -282,20 +344,6 @@ public class PlayGame  extends JFrame  {
 				
 		
 			
-			
-		});
-		
-		btnStats.setBounds(761, 78, 89, 23);
-		contentPane.add(btnStats);
-		
-		
-		
-		
-		
-		
-	
-	
-		
 		
 	}
 	}

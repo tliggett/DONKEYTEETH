@@ -8,11 +8,14 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Timer;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -26,6 +29,7 @@ import java.awt.Component;
 import java.awt.Panel;
 import java.awt.Font;
 import javax.swing.JCheckBox;
+import javax.swing.JInternalFrame;
 
 public class SuperSimFootballMenu  extends JFrame  {
 
@@ -160,7 +164,7 @@ public class SuperSimFootballMenu  extends JFrame  {
 				
 				for(int i = 0; i<teamdata.length; i++ ){
 					if(chkrand.isSelected()){
-						int r = (int) (32*Math.random());
+						int r = (int) (31*Math.random());
 						teamn = teamdata[r][0];
 					}
 					if(teamn == "Legendary"){
@@ -197,8 +201,8 @@ public class SuperSimFootballMenu  extends JFrame  {
 				int ovr1 = 0;
 				for(int i = 0; i<teamdata.length; i++ ){
 					if(chkrand_1.isSelected()){
-						int r = (int) (32*Math.random());
-						teamn = teamdata[r][0];
+						int r = (int) (31*Math.random());
+						teamn1 = teamdata[r][0];
 					}
 					
 					if(teamdata[i][0] == teamn1){
@@ -234,6 +238,9 @@ public class SuperSimFootballMenu  extends JFrame  {
 		
 		btnNewButton.setBounds(177, 292, 117, 29);
 		contentPane.add(btnNewButton);
+		
+		
+		
 		
 		
 		
