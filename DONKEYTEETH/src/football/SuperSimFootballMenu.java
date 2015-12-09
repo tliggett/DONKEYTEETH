@@ -160,33 +160,21 @@ public class SuperSimFootballMenu  extends JFrame  {
 				
 				int[] teamstats = new int[4];
 				int ovr = 0;
-				
+				if(chkrand.isSelected()){
+					int r = (int) (31*Math.random());
+					teamn = teamdata[r][0];
+				}
 				
 				for(int i = 0; i<teamdata.length; i++ ){
-					if(chkrand.isSelected()){
-						int r = (int) (31*Math.random());
-						teamn = teamdata[r][0];
-					}
-					if(teamn == "Legendary"){
-						args[0][0] = "Legendary Greats";
-						args[0][1] = Boolean.toString(chckbxCpuPlayer.isSelected());
-						
-						
-						args[0][2] = "1000";
-						
-						for(int j = 0; j<4; j++){
-							args[0][j+3] = "1000";
-							
-						}
-					}
-					else if(teamdata[i][0] == teamn){
+					
+					if(teamdata[i][0] == teamn){
 						args[0][0] = teamn;
 						args[0][1] = Boolean.toString(chckbxCpuPlayer.isSelected());
 						for(int j = 1; j<5; j++){
 							teamstats[j-1] =Integer.parseInt(teamdata[i][j]);
 							ovr += teamstats[j-1];
 						}
-						args[0][2] = "" + ovr/4;
+						args[0][2] = "" + (ovr/4);
 						
 						for(int j = 0; j<4; j++){
 							args[0][j+3] = teamdata[i][j+1];
@@ -199,11 +187,12 @@ public class SuperSimFootballMenu  extends JFrame  {
 				String teamn1 = (String) (comboBox1.getSelectedItem());
 				int[] teamstats1 = new int[4];
 				int ovr1 = 0;
+				if(chkrand_1.isSelected()){
+					int r = (int) (31*Math.random());
+					teamn1 = teamdata[r][0];
+				}
 				for(int i = 0; i<teamdata.length; i++ ){
-					if(chkrand_1.isSelected()){
-						int r = (int) (31*Math.random());
-						teamn1 = teamdata[r][0];
-					}
+					
 					
 					if(teamdata[i][0] == teamn1){
 						args[1][0] = teamn1;
@@ -212,7 +201,7 @@ public class SuperSimFootballMenu  extends JFrame  {
 							teamstats[j-1] =Integer.parseInt(teamdata[i][j]);
 							ovr1 += teamstats[j-1];
 						}
-						args[1][2] = "" + ovr1/4;
+						args[1][2] = "" + (ovr1/4);
 						
 						for(int j = 0; j<4; j++){
 							args[1][j+3] = teamdata[i][j+1];

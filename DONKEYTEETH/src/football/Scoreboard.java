@@ -575,45 +575,64 @@ public String FieldGraphic(){
 		}
 		
 	}
+	yards+=("||");
 	
-	for(int i = 1; i <=99; i++ ){
+	
+	
+	String drive = "\n";
+	
+	for(int i = -1; i <=99; i++ ){
 		if(GoingRight){
-			if(i == 100-yardline){
-					yards +=(">");
-				}
-			if(i== 100-yardline+yardstofirst){
-					yards +=("|");	
 			
+			if(i == 100-drivestart){
+					drive +=("[");
+				}
+			else if(i > 100-drivestart && i< 100-yardline){
+				drive+=("_");
+				
+			}
+			else if(i== 101-yardline+yardstofirst){
+					drive +=("|");	
+		
 					}
+			else if(i == 100-yardline && yardline<drivestart){
+				drive +=("]");	
+			}
 				else{
-						yards+=("-");
+						drive+=(" ");
 		
 					}
 		}else{
-			if(i == yardline){
+			if(i == drivestart){
 				
 				
 				
 				
-				yards+=("<");
+				drive+=("]");
 				}
-				if(i== yardline-yardstofirst){
-					yards+=("|");	
+			
+			else if(i < drivestart && i> yardline){
+					drive+=("_");	
 					
 				}
+			else if(i== yardline-yardstofirst){
+					drive +=("|");	
+			
+					}
+			else if(i == yardline && yardline<drivestart){
+				drive +=("[");	
+			}
 				else{
-					yards+=("-");
+					drive+=(" ");
 		}
-		}
-		
-	}
-	yards+=("||");
+		}}
+	
 	
 	String markers = ("\n  G        10        20        30        40        50        40        30        20        10         G");
 	
 	
 	
-	return yards + markers + msg;
+	return yards + drive + markers + msg;
 	
 }
 
